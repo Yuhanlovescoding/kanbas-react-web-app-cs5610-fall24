@@ -1,13 +1,19 @@
 import React, { useState, ChangeEvent } from 'react';
 export default function AssignmentEditor() {
 
-  const [showOnlineOptions, setShowOnlineOptions] = useState(false);
+    const [showOnlineOptions, setShowOnlineOptions] = useState(false);
 
     
     const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setShowOnlineOptions(event.target.value === 'ONLINE');
     };
+    const handleSave = () => {
+      console.log('Save button clicked');
+    };
 
+    const handleCancel = () => {
+        console.log('Cancel button clicked');
+    };
     return (
       <div id="wd-assignments-editor">
         <label htmlFor="wd-name">Assignment Name</label>
@@ -57,7 +63,7 @@ export default function AssignmentEditor() {
           </td>
           <td>
             <select id="wd-submission-type" onChange={handleTypeChange}>
-    
+              <option value="PLEASE SELECT">Please Select</option>
               <option value="ONLINE">Online</option>
               <option value="IN PERSON">In Person</option>
             </select>
@@ -104,10 +110,14 @@ export default function AssignmentEditor() {
               <input type="date" style={{ marginLeft: "5px" }}id="wd-until" value="2024-05-20"/>
           </td>
         </tr>
-        
-
-        
       </table>
+
+      <hr style={{ margin: '20px 0' }} />
+      <div style={{ textAlign: 'right' }}>
+            <button onClick={handleCancel}>Cancel</button>
+            <button onClick={handleSave} style={{ marginLeft: "10px" }}>Save</button>
+      </div>
+
     </div>
 );}
 
