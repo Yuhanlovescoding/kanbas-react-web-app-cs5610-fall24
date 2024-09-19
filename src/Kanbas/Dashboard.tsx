@@ -17,14 +17,109 @@ export default function Dashboard() {
                                 Full Stack software developer
                             </p>
                             <button> Go </button>
-                            </div>
-                        </Link>
                         </div>
-                        <div className="wd-dashboard-course"> ... </div>
-                        <div className="wd-dashboard-course"> ... </div>
-                    </div>
-                    </div>
-                );
-                }
+                    </Link>
+                </div>
+                        
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5001 Python
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Intensive Foundations of CS
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+               
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5002 Math
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Discrete Structures
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5004 Java
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Object-Oriented Ddesign
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5005 Recitation for CS5004
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Recitation for CS5004
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5008 C/C++
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Data Str, Algo & App in CmpSys
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+
+                <div className="wd-dashboard-course"> 
+                    <Link className="wd-dashboard-course-link"
+                            to="/Kanbas/Courses/1234/Home">
+                        <img src="/images/reactjs.jpg" width={200} />
+                        <div>
+                            <h5>
+                                CS5009 Recitation for CS5008
+                            </h5>
+                            <p className="wd-dashboard-course-title">
+                                Recitation for CS5008
+                            </p>
+                            <button> Go </button>
+                        </div>
+                    </Link>     
+                </div>
+
+            </div>
+        </div>
+    );
+}
 
 

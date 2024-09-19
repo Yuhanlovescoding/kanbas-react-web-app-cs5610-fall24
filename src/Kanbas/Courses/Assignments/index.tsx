@@ -16,7 +16,10 @@ export default function Assignments() {
             </a>
           </li>
           <li className="wd-assignment-list-item">
-            {/* Complete On Your Own */}
+            <a className="wd-assignment-link"
+                href="#/Kanbas/Courses/1234/Assignments/123">
+                A2 - Css + BOOTSTART
+            </a>
           </li>
         </ul>
       </div>

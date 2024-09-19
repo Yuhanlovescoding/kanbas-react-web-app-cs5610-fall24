@@ -3,6 +3,7 @@ import AccountNavigation from "./Navigation";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import Profile from "./Profile";
+
 export default function Account() {
     return (
         <div id="wd-account-screen">
