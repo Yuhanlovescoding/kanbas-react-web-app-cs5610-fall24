@@ -1,9 +1,11 @@
 export default function Modules() {
     return (
       <div>
-        {/* Implement Collapse All button, View Progress button, etc. */}
+        
         <button>Collapse All</button> <button>View Progress</button>
-        <button>Publish All</button> 
+        <select id="wd=publish">
+          <option value="PUBLISH ALL">Publish All</option>
+        </select>
         <button>+ Module</button>
        
         <ul id="wd-modules">
