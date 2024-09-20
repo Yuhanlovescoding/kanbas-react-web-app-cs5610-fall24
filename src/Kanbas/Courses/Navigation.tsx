@@ -3,7 +3,7 @@ export default function CoursesNavigation() {
   
   return (
     <div id="wd-courses-navigation">
-      <ul style={{ padding:20}}>
+      <ul style={{padding: 10, marginTop: 0, paddingTop: 0}}>
         <li><Link id="wd-course-home-link"    to="/Kanbas/Courses/1234/Home">Home</Link><br/></li>
         <li><Link id="wd-course-modules-link" to="/Kanbas/Courses/1234/Modules">Modules</Link><br/></li>
         <li><Link id="wd-course-piazza-link"  to="/Kanbas/Courses/1234/Piazza">Piazza</Link><br/></li>

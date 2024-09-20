@@ -20,10 +20,10 @@ export default function Dashboard() {
                         </div>
                     </Link>
                 </div>
-                        
+                <br />       
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5001/Home">
                         <img src="/images/2.jpg" width={200} />
                         <div>
                             <h5>
@@ -36,10 +36,10 @@ export default function Dashboard() {
                         </div>
                     </Link>     
                 </div>
-               
+                <br /> 
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5002/Home">
                         <img src="/images/3.jpg" width={200} />
                         <div>
                             <h5>
@@ -52,10 +52,10 @@ export default function Dashboard() {
                         </div>
                     </Link>     
                 </div>
-
+                <br />
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5004/Home">
                         <img src="/images/4.jpg" width={200} />
                         <div>
                             <h5>
@@ -68,10 +68,10 @@ export default function Dashboard() {
                         </div>
                     </Link>     
                 </div>
-
+                <br />
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5005/Home">
                         <img src="/images/5.jpg" width={200} />
                         <div>
                             <h5>
@@ -84,10 +84,10 @@ export default function Dashboard() {
                         </div>
                     </Link>     
                 </div>
-
+                <br />
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5008/Home">
                         <img src="/images/6.jpg" width={200} />
                         <div>
                             <h5>
@@ -100,10 +100,10 @@ export default function Dashboard() {
                         </div>
                     </Link>     
                 </div>
-
+                <br />
                 <div className="wd-dashboard-course"> 
                     <Link className="wd-dashboard-course-link"
-                            to="/Kanbas/Courses/1234/Home">
+                            to="/Kanbas/Courses/5009/Home">
                         <img src="/images/7.jpg" width={200} />
                         <div>
                             <h5>

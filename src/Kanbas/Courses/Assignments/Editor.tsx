@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 export default function AssignmentEditor() {
 
-    const [showOnlineOptions, setShowOnlineOptions] = useState(false);
+    const [showOnlineOptions, setShowOnlineOptions] = useState(true);
 
     
     const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -22,7 +22,7 @@ export default function AssignmentEditor() {
           The assignment is available online Submit a link to the landing page of your 
           wed application running on Netlify. 
         </textarea>
-        <br />
+        <br /><br />
         <table>
         <tr>
           <td align="right" valign="top">
@@ -32,7 +32,7 @@ export default function AssignmentEditor() {
             <input id="wd-points" value={100} />
           </td>
         </tr>
-
+        <br />
         <tr>
           <td align="right" valign="top">
           
@@ -44,7 +44,7 @@ export default function AssignmentEditor() {
             </select>
           </td>
         </tr>
-        
+        <br />
         <tr>
           <td align="right" valign="top">
             <label htmlFor="wd-display-grade-as">Display Grade as</label>
@@ -56,63 +56,65 @@ export default function AssignmentEditor() {
             </select>
           </td>
         </tr>
-        
+        <br />
         <tr>
           <td align="right" valign="top">
             <label htmlFor="wd-submission-type">Display Grade as</label>
           </td>
           <td>
             <select id="wd-submission-type" onChange={handleTypeChange}>
-              <option value="PLEASE SELECT">Please Select</option>
               <option value="ONLINE">Online</option>
               <option value="IN PERSON">In Person</option>
             </select>
+            
             {showOnlineOptions && (
               <div id="onlineOptions">
-                <label>Online Entry Options</label><br />
-                <input type="checkbox" name="online-opt" id="wd-chkbox-text"/>
-                <label htmlFor="wd-chkbox-text">Text Entry</label><br/>
+                <label><br />Online Entry Options</label><br />
+                <input type="checkbox" name="online-opt" id="wd-text-entry"/>
+                <label htmlFor="wd-text-entry">Text Entry</label><br/>
 
-                <input type="checkbox" name="online-opt" id="wd-chkbox-web"/>
-                <label htmlFor="wd-chkbox-web">Web URL</label><br/>
+                <input type="checkbox" name="online-opt" id="wd-website-url"/>
+                <label htmlFor="wd-website-url">Web URL</label><br/>
 
-                <input type="checkbox" name="online-opt" id="wd-chkbox-media"/>
-                <label htmlFor="wd-chkbox-media">Media Recordings</label><br/>
+                <input type="checkbox" name="online-opt" id="wd-media-recordings"/>
+                <label htmlFor="wd-media-recordings">Media Recordings</label><br/>
 
-                <input type="checkbox" name="online-opt" id="wd-chkbox-student"/>
-                <label htmlFor="wd-chkbox-student">Student Annotation</label>
+                <input type="checkbox" name="online-opt" id="wd-student-annotation"/>
+                <label htmlFor="wd-student-annotation">Student Annotation</label>
 
-                <input type="checkbox" name="online-opt" id="wd-chkbox-file"/>
-                <label htmlFor="wd-chkbox-file">File Uploads</label>
+                <input type="checkbox" name="online-opt" id="wd-file-upload"/>
+                <label htmlFor="wd-file-upload">File Uploads</label>
               </div>
               )}
             </td>
           </tr> 
-
+          <br />
           <tr>
-            <td rowSpan={4} align="right" valign="top">Assign</td>
+            <td rowSpan={5} align="right" valign="top">Assign</td>
             <td align="left" valign="top">
               <label htmlFor="wd-assign-to">Asign to</label><br />
               <input id="wd-assign-to" value="Everyone" />
           </td>
         </tr>
+        <br />
         <tr>
           <td align="left" valign="top">
               <label htmlFor="wd-due-date">Due</label><br />
               <input type="date" id="wd-due-date" value="2024-05-13"/>
           </td>
         </tr>
+        <br />
         <tr>
           <td align="left" valign="top">
               <label htmlFor="wd-available-from">Available from</label>
-              <label htmlFor="wd-until" style={{ marginLeft: "35px" }}>Until</label><br />
+              <label htmlFor="wd-available-until" style={{ marginLeft: "35px" }}>Until</label><br />
               <input type="date" id="wd-available-from" value="2024-05-06"/>
-              <input type="date" style={{ marginLeft: "5px" }}id="wd-until" value="2024-05-20"/>
+              <input type="date" style={{ marginLeft: "5px" }}id="wd-available-until" value="2024-05-13"/>
           </td>
         </tr>
       </table>
 
-      <hr style={{ margin: '20px 0' }} />
+      <hr style={{ margin: '10px 0' }} />
       <div style={{ textAlign: 'right' }}>
             <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleSave} style={{ marginLeft: "10px" }}>Save</button>
