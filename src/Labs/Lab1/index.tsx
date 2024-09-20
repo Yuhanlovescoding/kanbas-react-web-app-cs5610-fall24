@@ -231,13 +231,6 @@ tag to tell browsers to render the gaps.
         Please
         <a id="wd-lipsum" href="https://www.lipsum.com">click here</a>
         to get dummy text<br/>
-
-
-
-
-
-
-
       </div>
     );
   }

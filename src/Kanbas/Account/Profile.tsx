@@ -18,5 +18,6 @@ export default function Profile() {
       </select><br/>
       <Link to="/Kanbas/Account/Signin" >Sign out</Link>
     </div>
-);}
+  );
+}
 

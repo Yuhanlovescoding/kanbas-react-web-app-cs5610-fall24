@@ -14,5 +14,6 @@ export default function CoursesNavigation() {
         <li><Link id="wd-course-people-link"  to="/Kanbas/People">People</Link><br/></li>
       </ul>
     </div>
-);}
+  );
+}
 

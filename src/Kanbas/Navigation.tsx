@@ -13,5 +13,6 @@ export default function KanbasNavigation() {
         <li><a href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
     </div>
-);}
+  );
+}
 

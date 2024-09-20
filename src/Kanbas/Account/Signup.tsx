@@ -10,5 +10,6 @@ export default function Signup() {
       <Link to="/Kanbas/Account/Profile" > Sign up </Link><br />
       <Link to="/Kanbas/Account/Signin" >Sign in</Link>
     </div>
-);}
+  );
+}
 

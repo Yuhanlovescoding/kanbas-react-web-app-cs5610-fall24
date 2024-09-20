@@ -68,6 +68,7 @@ export default function Modules() {
           </li>
         </ul>
       </div>
-  );}
+  );
+}
   
   

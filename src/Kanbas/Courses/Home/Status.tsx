@@ -10,6 +10,7 @@ export default function CourseStatus() {
         <button>New Analytics</button><br /> 
         <button>View Course Notifications</button>
       </div>
-  );}
+  );
+}
   
   
