@@ -1,7 +1,6 @@
 export default function Modules() {
     return (
       <div>
-        
         <button>Collapse All</button> <button>View Progress</button>
         <select id="wd=publish">
           <option value="PUBLISH ALL">Publish All</option>
