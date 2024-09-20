@@ -114,7 +114,7 @@ export default function AssignmentEditor() {
         </tr>
       </table>
 
-      <hr style={{ margin: '10px 0' }} />
+      <hr />
       <div style={{ textAlign: 'right' }}>
             <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleSave} style={{ marginLeft: "10px" }}>Save</button>

@@ -10,6 +10,7 @@ export default function KanbasNavigation() {
         <li><Link to="/Kanbas/Calendar" id="wd-calendar-link">Calendar</Link><br/></li>
         <li><Link to="/Kanbas/Inbox" id="wd-inbox-link">Inbox</Link><br/></li>
         <li><Link to="/Labs" id="wd-labs-link">Labs</Link><br/></li>
+        <li><a href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
     </div>
 );}

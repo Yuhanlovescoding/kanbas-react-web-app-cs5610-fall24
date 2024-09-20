@@ -9,6 +9,8 @@ import Courses from "./Courses";
 export default function Kanbas() {
   return (
     <div id="wd-kanbas">
+      <h1>Kanbas</h1>
+      <h2> Yuhan Lin | SEC 02</h2>
       <table>
         <tr>
           <td valign="top">
