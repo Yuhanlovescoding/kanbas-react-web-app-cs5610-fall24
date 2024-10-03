@@ -6,6 +6,11 @@ import Margins from "./Margins";
 import Corners from "./Corners";
 import Dimensions from "./Dimensions";
 import Positions from "./Positions";
+import Zindex from "./Zindex";
+import Float from "./Float";
+import GridLayout from "./GridLayout";
+import Flex from "./Flex";
+import ReactIconsSampler from "./ReactIcons";
 
 export default function Lab2() {
   return (
@@ -77,6 +82,11 @@ Here's another paragraph using a different ID and a different look and
       <Corners />
       <Dimensions />
       <Positions />
+      <Zindex />
+      <Float />
+      <GridLayout />
+      <Flex />
+      <ReactIconsSampler />
     </div>
   );
 }
