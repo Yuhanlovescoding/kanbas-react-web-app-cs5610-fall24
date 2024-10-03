@@ -2,6 +2,10 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
+import { HiChartBar } from "react-icons/hi2";
+import { ImBullhorn } from "react-icons/im";
+import { ImDatabase } from "react-icons/im";
+import { ImBubble } from "react-icons/im";
 
 export default function CourseStatus() {
   return (
@@ -21,13 +25,16 @@ export default function CourseStatus() {
         <BiImport className="me-2 fs-5" /> Import Existing Content </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </button>
-
-      <button>Import Existing Content</button><br /> 
-      <button>Import from Commons</button><br /> 
-      <button>View Course Stream</button><br /> 
-      <button>New Announcement</button><br /> 
-      <button>New Analytics</button><br /> 
-      <button>View Course Notifications</button>
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <HiChartBar className="me-2 fs-5" /> View Course Strea </button>
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <ImBullhorn className="me-2 fs-5" /> New Announcement </button>
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <ImDatabase className="me-2 fs-5" /> New Analytics </button>
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <ImBubble className="me-2 fs-5" /> View Course Notifications </button>
+      
+    
     </div>
   );
 }
