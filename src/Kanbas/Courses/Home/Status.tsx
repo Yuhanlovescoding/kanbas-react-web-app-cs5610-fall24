@@ -1,5 +1,11 @@
+import { MdDoNotDisturbAlt } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
+import { BiImport } from "react-icons/bi";
+import { LiaFileImportSolid } from "react-icons/lia";
+
 export default function CourseStatus() {
   return (
+    
     <div id="wd-course-status">
       <h2>Course Status</h2>
       <button>Unpublish</button> <button>Publish</button><br /><br /> 
