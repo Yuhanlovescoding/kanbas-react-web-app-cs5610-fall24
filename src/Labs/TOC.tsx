@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { useLocation } from "react-router";
 
 export default function TOC() {
+  const { pathname } = useLocation();
   return (
     <ul className="nav nav-pills">
       <li className="nav-item">
@@ -11,19 +12,19 @@ export default function TOC() {
       </li>
       <li className="nav-item">
         <a id="wd-a1" href="#/Labs/Lab1"
-          className={`nav-link ${"/Labs/Lab1".includes("Lab1") ? "active" : ""}`}>
+          className={`nav-link ${pathname.includes("Lab1") ? "active" : ""}`}>
           Lab 1
         </a>
       </li>
       <li className="nav-item">
         <a id="wd-a2" href="#/Labs/Lab2"
-          className={`nav-link ${"/Labs/Lab2".includes("Lab2") ? "active" : ""}`}>
+          className={`nav-link ${pathname.includes("Lab2") ? "active" : ""}`}>
           Lab 2
         </a>
       </li>
       <li className="nav-item">
         <a id="wd-a3" href="#/Labs/Lab3"
-          className={`nav-link ${"/Labs/Lab3".includes("Lab3") ? "active" : ""}`}>
+          className={`nav-link ${pathname.includes("Lab3") ? "active" : ""}`}>
           Lab 3
         </a>
       </li>
@@ -38,6 +39,7 @@ export default function TOC() {
         </a>
       </li>
     </ul>
+
   );
 }
 
