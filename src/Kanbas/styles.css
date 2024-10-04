@@ -117,18 +117,18 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
 
   .date-range {
     display: flex;
-    justify-content: space-between; /* 在两个日期框之间留出空间 */
-    width: 100%; /* 保证它们占满整个宽度 */
+    justify-content: space-between; 
+    width: 100%; 
 }
 
 .date-range input[type="date"] {
-    width: 48%; /* 确保两个输入框的宽度相同且对齐 */
+    width: 48%; 
 }
 
 .date-input-container label {
     display: inline-block;
-    width: 48%; /* 和输入框的宽度保持一致 */
-    text-align: left; /* 确保标签靠左对齐 */
+    width: 48%; 
+    text-align: left; 
 }
 
 .assignment-description-box {

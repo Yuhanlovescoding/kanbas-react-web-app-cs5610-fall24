@@ -14,9 +14,10 @@ export default function KanbasNavigation() {
         className="list-group-item bg-black border-0 text-center">
         <img src="/images/NEU.png" width="75px" /></a>
       <Link to="/Kanbas/Account" id="wd-account-link"
-        className="list-group-item text-center border-0 bg-black text-white">
-        <FaRegCircleUser className="fs-1 text text-white" /><br />
+        className="list-group-item text-center border-0 bg-black text-white text-danger">
+        <FaRegCircleUser className="fs-1 text-danger" /><br />
         Account </Link>
+      
       <Link to="/Kanbas/Dashboard" id="wd-dashboard-link"
         className="list-group-item text-center border-0
                    bg-white text-danger">
