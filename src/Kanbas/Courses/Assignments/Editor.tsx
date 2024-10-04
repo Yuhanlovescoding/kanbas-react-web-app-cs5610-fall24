@@ -1,28 +1,36 @@
 import React, { useState, ChangeEvent } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { GoChevronDown } from "react-icons/go";
+
 export default function AssignmentEditor() {
 
   const [showOnlineOptions, setShowOnlineOptions] = useState(true);
 
-    
   const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setShowOnlineOptions(event.target.value === 'ONLINE');
   };
+
   const handleSave = () => {
     console.log('Save button clicked');
   };
 
   const handleCancel = () => {
-      console.log('Cancel button clicked');
+    console.log('Cancel button clicked');
   };
+
   
   return (
-    
-    <div id="wd-assignments-editor" className="full-width">
-      <label htmlFor="wd-name">Assignment Name</label><br />
-      <input id="wd-name" value="A1 - ENV + HTML" className="full-width" /><br /><br />
+    <div id="wd-assignments-editor" className="container">
       
-      <div className="assignment-description-box">
+      
+      <div className="mb-3">
+        <label htmlFor="wd-name" className="form-label">Assignment Name</label>
+        <input id="wd-name" value="A1 - ENV + HTML" className="form-control" />
+      </div>
+
+
+
+      <div className="assignment-description-box mb-4">
         <p>The assignment is <span className="text-danger">available online.</span></p> 
         <p>Submit a link to the landing page of your web application running on Netlify.</p>
         <p>The landing page should include the following:</p>
@@ -32,117 +40,119 @@ export default function AssignmentEditor() {
             <li>Link to the Kanbas application</li>
             <li>Links to all relevant source code repositories</li>
         </ul>
-        <p>The Kanbas application should include a link to navigate back to the landing page.</p>
-    </div>
-      <br /><br />
+        <p>The Kanbas application should inclued a link to navigate back to the landing page.</p>
+      </div>
+
       
-      <table className="full-width">
-        <tr>
-        <td className="table-cell">
-          <label htmlFor="wd-points">Points</label>
-        </td>
-        <td className="table-input-cell">
-          <input id="wd-points" value={100} className="full-width" />
-        </td>
-      </tr>
-      <br />
-      <tr>
-        <td className="table-cell">
-          <label htmlFor="wd-group">Assignment Group</label>
-        </td>
-        <td className="table-input-cell">
-          <select id="wd-group" className="full-width">
+      <div className="row mb-3">
+        <label htmlFor="wd-points" className="col-md-2 col-form-label text-md-end">Points</label>
+        <div className="col-md-10">
+          <input id="wd-points" value={100} className="form-control" />
+        </div>
+      </div>
+
+      <div className="row mb-3">
+        <label htmlFor="wd-group" className="col-md-2 col-form-label text-md-end">Assignment Group</label>
+        <div className="col-md-10">
+        <div className="select-wrapper position-relative">
+          <select id="wd-group" className="form-control">
             <option value="ASSIGNMENTS">ASSIGNMENTS</option>
           </select>
-        </td>
-      </tr>
-      <br />
-      <tr>
-      <td className="table-cell">
-          <label htmlFor="wd-display-grade-as">Display Grade as</label>
-        </td>
-        <td className="table-input-cell">
-          <select id="wd-display-grade-as" className="full-width">
+          <GoChevronDown className="select-icon" />
+        </div>
+      </div>
+      </div>
+
+      <div className="row mb-3">
+        <label htmlFor="wd-display-grade-as" className="col-md-2 col-form-label text-md-end">Display Grade as</label>
+        <div className="col-md-10">
+        <div className="select-wrapper position-relative">
+          <select id="wd-display-grade-as" className="form-control">
             <option value="PERCENTAGE">Percentage</option>
             <option value="INTEGER">Integer</option>
           </select>
-        </td>
-      </tr>
-      <br />
-      <tr>
-        <td className="table-cell">
-          <label htmlFor="wd-submission-type">Submission Type</label>
-        </td>
-        <td className="table-input-cell">
-        <div className="submission-box">
-          <select id="wd-submission-type" onChange={handleTypeChange} className="full-width">
-            <option value="ONLINE">Online</option>
-            <option value="IN PERSON">In Person</option>
-          </select>
-          {showOnlineOptions && (
-            <div id="onlineOptions" className="submission-options">
-              <label>Online Entry Options</label><br />
-              <input type="checkbox" name="online-opt" id="wd-text-entry"/>
-              <label htmlFor="wd-text-entry">Text Entry</label><br/>
-
-              <input type="checkbox" name="online-opt" id="wd-website-url"/>
-              <label htmlFor="wd-website-url">Web URL</label><br/>
-
-              <input type="checkbox" name="online-opt" id="wd-media-recordings"/>
-              <label htmlFor="wd-media-recordings">Media Recordings</label><br/>
-
-              <input type="checkbox" name="online-opt" id="wd-student-annotation"/>
-              <label htmlFor="wd-student-annotation">Student Annotation</label><br/>
-
-              <input type="checkbox" name="online-opt" id="wd-file-upload"/>
-              <label htmlFor="wd-file-upload">File Uploads</label>
-            </div>
-            )}
-          </div>
-          </td>
-        </tr> 
-        <br />
-        <tr>
-        <td className="table-cell" rowSpan={5}>Assign</td>
-        <td className="table-input-cell">
-          <div className="assign-box">
-            <label htmlFor="wd-assign-to">Asign to</label><br />
-            <div className="input-with-tag">
-              <input type="text" id="wd-assign-to" className="full-width" />
-              <div className="tag-inside-input">
-              <span>Everyone</span>
-              <FaTimes className="remove-tag-icon" />
-            </div>
-            </div>
-            <br /><br />
-            <div className="date-input-container">
-            <label htmlFor="wd-due-date">Due</label><br />
-            <input type="date" id="wd-due-date" value="2024-05-13" className="full-width custom-date-input" />
-            </div>
-            <br /><br />
-            <div className="date-input-container">
-            <div className="d-flex justify-content-between">
-              <label htmlFor="wd-available-from">Available from</label>
-              <label htmlFor="wd-available-until" style={{ marginLeft: "15px" }}>Until</label>
-            </div>
-            <div className="date-range">
-            
-              <input type="date" id="wd-available-from" value="2024-05-06" className="custom-date-input"/>
-              
-            <input type="date" id="wd-available-until" value="2024-05-13" style={{ marginLeft: "5px" }} className="custom-date-input"/>
-          </div></div></div>
-        </td>
-      </tr>
-    </table>
-
-    <hr />
-    <div style={{ textAlign: 'right' }}>
-        <button onClick={handleCancel} className="btn btn-secondary">Cancel</button>
-        <button onClick={handleSave} className="btn btn-primary" style={{ marginLeft: "10px" }}>Save</button>
+          <GoChevronDown className="select-icon" />
+        </div>
+      </div>
       </div>
 
+      
+      <div className="row mb-3">
+        <label htmlFor="wd-submission-type" className="col-md-2 col-form-label text-md-end">Submission Type</label>
+        <div className="col-md-10">
+          <div className="submission-box p-3 border">
+          <div className="select-wrapper position-relative">
+            <select id="wd-submission-type" onChange={handleTypeChange} className="form-control">
+              <option value="ONLINE">Online</option>
+              <option value="IN PERSON">In Person</option>
+            </select>
+            <GoChevronDown className="select-icon" />
+          </div>
+            
+            {showOnlineOptions && (
+              <div id="onlineOptions" className="submission-options mt-2">
+                <label>Online Entry Options</label><br />
+                <input type="checkbox" name="online-opt" id="wd-text-entry"/>
+                <label htmlFor="wd-text-entry">Text Entry</label><br/>
+
+                <input type="checkbox" name="online-opt" id="wd-website-url"/>
+                <label htmlFor="wd-website-url">Web URL</label><br/>
+
+                <input type="checkbox" name="online-opt" id="wd-media-recordings"/>
+                <label htmlFor="wd-media-recordings">Media Recordings</label><br/>
+
+                <input type="checkbox" name="online-opt" id="wd-student-annotation"/>
+                <label htmlFor="wd-student-annotation">Student Annotation</label><br/>
+
+                <input type="checkbox" name="online-opt" id="wd-file-upload"/>
+                <label htmlFor="wd-file-upload">File Uploads</label>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      
+      <div className="row mb-3">
+        <label className="col-md-2 col-form-label text-md-end">Assign</label>
+        <div className="col-md-10">
+          <div className="assign-box p-3 border">
+            <label htmlFor="wd-assign-to">Assign to</label><br />
+            <div className="input-with-tag">
+              <input type="text" id="wd-assign-to" className="form-control" />
+              <div className="tag-inside-input">
+                <span>Everyone</span>
+                <FaTimes className="remove-tag-icon" />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-md-12">
+                <label htmlFor="wd-due-date">Due</label>
+                <input type="date" id="wd-due-date" value="2024-05-13" className="form-control custom-date-input" />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-md-6">
+                <label htmlFor="wd-available-from">Available from</label>
+                <input type="date" id="wd-available-from" value="2024-05-06" className="form-control custom-date-input"/>
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="wd-available-until">Until</label>
+                <input type="date" id="wd-available-until" value="2024-05-13" className="form-control custom-date-input"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <hr />
+      <div className="d-flex justify-content-end mt-3">
+        <button onClick={handleCancel} className="btn btn-secondary me-2">Cancel</button>
+        <button onClick={handleSave} className="btn btn-danger float-end">Save</button>
+      </div>
     </div>
   );
 }
-
-  

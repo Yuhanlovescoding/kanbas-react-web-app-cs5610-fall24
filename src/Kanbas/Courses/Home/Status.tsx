@@ -20,13 +20,13 @@ export default function CourseStatus() {
         <button className="btn btn-lg btn-success w-100">
             <FaCheckCircle className="me-2 fs-5" /> Publish </button>
         </div>
-      </div><br />
+      </div>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <BiImport className="me- fs-5" /> Import Existing Content </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-        <HiChartBar className="me-2 fs-5" /> View Course Strea </button>
+        <HiChartBar className="me-2 fs-5" /> View Course Stream </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <ImBullhorn className="me-2 fs-5" /> New Announcement </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">

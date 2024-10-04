@@ -52,9 +52,9 @@ export default function Assignments() {
       <div className="d-flex align-items-center">
         <AssignmentControlButtons />
           <div className="ms-3">
-              <a className="wd-assignment-link fw-bold"
+              <a className="wd-assignment-link  fs-5"
                 href="#/Kanbas/Courses/1234/Assignments/123">
-                A1 - ENV + HTML
+                A1
               </a>
               <br />
               <small className="text-muted">
@@ -72,9 +72,9 @@ export default function Assignments() {
             <div className="d-flex align-items-center">
               <AssignmentControlButtons />
                 <div className="ms-3">
-                    <a className="wd-assignment-link fw-bold"
+                    <a className="wd-assignment-link fs-5"
                       href="#/Kanbas/Courses/1234/Assignments/123">
-                      A2 - CSS + BOOTSTRAP
+                      A2
                     </a>
                     <br />
                     <small className="text-muted">
@@ -92,9 +92,9 @@ export default function Assignments() {
             <div className="d-flex align-items-center">
               <AssignmentControlButtons />
                 <div className="ms-3">
-                    <a className="wd-assignment-link fw-bold"
+                    <a className="wd-assignment-link fs-5"
                       href="#/Kanbas/Courses/1234/Assignments/123">
-                      A3 - JAVASCRIPT + REACT
+                      A3
                     </a>
                     <br />
                     <small className="text-muted">

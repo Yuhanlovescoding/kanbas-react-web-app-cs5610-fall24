@@ -4,10 +4,10 @@ import { FaBan } from "react-icons/fa";
 export default function ModulesControls() {
   return (
     <div id="wd-modules-controls" className="text-nowrap d-flex justify-content-end">
-        <button id="wd-collapse-all" className="btn btn-lg btn-secondary me-1 float-end">
+        <button id="wd-collapse-all" className="btn btn-lg btn-secondary me-1 ">
             Collapse All
         </button> 
-        <button id="wd-view-progress" className="btn btn-lg btn-secondary me-1 float-end">
+        <button id="wd-view-progress" className="btn btn-lg btn-secondary me-1 ">
             View Progress
         </button> 
         <div className="dropdown d-inline me-1">
@@ -27,7 +27,7 @@ export default function ModulesControls() {
               Publish modules only</a>
           </li>
           <li>
-            <a id="wd-publish-modules-only-button" className="dropdown-item" href="#">
+            <a id="wd-unpublish-all-modules-and-items-btn" className="dropdown-item" href="#">
             <FaBan /> 
             Unpublish all modules and items</a>
           </li>
@@ -38,7 +38,7 @@ export default function ModulesControls() {
           </li>
         </ul>
       </div>
-      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end">
+      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 ">
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module</button>
       

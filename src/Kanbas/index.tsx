@@ -10,10 +10,9 @@ export default function Kanbas() {
     <div id="wd-kanbas" >
       <KanbasNavigation />
         <div  className="wd-main-content-offset p-3">
-        <h1>Kanbas</h1>
-        <h2> Yuhan Lin | SEC 02</h2><br />
+
           <Routes>
-            <Route path="/" element={<Navigate to="Account" />} />
+            <Route path="/" element={<Navigate to="Dashboard" />} />
             <Route path="/Account/*" element={<Account />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Courses/:cid/*" element={<Courses />} />
