@@ -7,7 +7,7 @@ import Profile from "./Profile";
 export default function Account() {
   return (
     <div id="wd-account-screen">
-      <h2>Account</h2>
+      <h1>Account</h1>
       <table>
         <tr>
           <td valign="top">
