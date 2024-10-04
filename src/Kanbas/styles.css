@@ -197,10 +197,10 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   
   .select-icon {
     position: absolute;
-    right: 10px; /* 图标距离选择框右侧的距离 */
-    top: 50%; /* 垂直居中 */
+    right: 10px; 
+    top: 50%; 
     transform: translateY(-50%);
-    pointer-events: none; /* 确保图标不会阻止选择框的操作 */
+    pointer-events: none; 
   }
 
   
