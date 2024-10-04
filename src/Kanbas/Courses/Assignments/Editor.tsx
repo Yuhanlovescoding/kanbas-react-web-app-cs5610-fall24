@@ -19,7 +19,7 @@ export default function AssignmentEditor() {
       <label htmlFor="wd-name">Assignment Name</label><br/>
       <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
       <textarea id="wd-description" cols={30} rows={5}>
-        The assignment is available online.<br />
+        The assignment is available online.
         Submit a link to the landing page of your 
         wed application running on Netlify. 
       </textarea>
