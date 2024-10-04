@@ -3,14 +3,14 @@ import GreenCheckmark from "./GreenCheckmark";
 import { FaBan } from "react-icons/fa";
 export default function ModulesControls() {
   return (
-    <div id="wd-modules-controls" className="text-nowrap d-flex justify-content-end">
-        <button id="wd-collapse-all" className="btn btn-lg btn-secondary me-1 float-end">
+    <div id="wd-modules-controls" className="text-nowrap d-flex align-items-center justify-content-between">
+        <button id="wd-collapse-all" className="btn btn-lg btn-secondary me-2 ">
             Collapse All
         </button> 
-        <button id="wd-view-progress" className="btn btn-lg btn-secondary me-1 float-end">
+        <button id="wd-view-progress" className="btn btn-lg btn-secondary me-2 ">
             View Progress
         </button> 
-        <div className="dropdown d-inline me-1">
+        <div className="dropdown d-inline me-2">
         <button id="wd-publish-all-btn" className="btn btn-lg btn-secondary dropdown-toggle"
           type="button" data-bs-toggle="dropdown">
           <GreenCheckmark />

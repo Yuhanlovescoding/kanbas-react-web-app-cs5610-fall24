@@ -22,7 +22,7 @@ export default function CourseStatus() {
         </div>
       </div><br />
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-        <BiImport className="me-2 fs-5" /> Import Existing Content </button>
+        <BiImport className="me- fs-5" /> Import Existing Content </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
