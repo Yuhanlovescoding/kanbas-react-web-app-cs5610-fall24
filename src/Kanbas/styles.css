@@ -26,4 +26,128 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
 .wd-lesson {
     border-left: 3px solid green !important;
 }
-    
+
+/* 设置通用的宽度为 100% */
+.full-width {
+    width: 100%;
+}
+  
+ 
+.table-cell {
+    width: 20%; 
+    text-align: right;
+    vertical-align: top;
+    padding-right: 10px;
+}
+  
+  .table-input-cell {
+    width: 80%; 
+}
+
+.assignment-editor {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+
+
+  .submission-box {
+    padding: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    background-color: #f9f9f9; 
+    margin-top: 5px; 
+  }
+  
+  .submission-options {
+    padding: 10px 0;
+  }
+
+  .submission-options label {
+    margin-left: 5px; 
+  }
+
+  .submission-options input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  .assign-box {
+    padding: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    background-color: #f9f9f9; 
+    margin-top: 5px; 
+  }
+  
+  .input-with-tag {
+    position: relative; 
+    width: 100%;
+  }
+  
+
+  
+  .tag-inside-input {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e9ecef; 
+    padding: 1px 10px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .tag-inside-input span {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .remove-tag-icon {
+    margin-left: 5px;
+    color: #888;
+    font-size: 18px; 
+    cursor: pointer; 
+  }
+
+  .date-range {
+    display: flex;
+    justify-content: space-between; /* 在两个日期框之间留出空间 */
+    width: 100%; /* 保证它们占满整个宽度 */
+}
+
+.date-range input[type="date"] {
+    width: 48%; /* 确保两个输入框的宽度相同且对齐 */
+}
+
+.date-input-container label {
+    display: inline-block;
+    width: 48%; /* 和输入框的宽度保持一致 */
+    text-align: left; /* 确保标签靠左对齐 */
+}
+
+.assignment-description-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .assignment-description-box .text-danger {
+    color: red;
+  }
+
+  .assignment-description-box ul {
+    margin-left: 20px;
+  }
+
+
+
+  

@@ -12,8 +12,9 @@ export default function Modules() {
             <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center">
             <BsGripVertical className="me-2 fs-3" />
               Week 1, Lecture 1 - Course Introduction, Syllabus
+              <div className="ms-auto">
               <ModuleControlButtons />  
-            </div>
+            </div></div>
 
             <ul className="wd-lessons list-group rounded-0">
 
