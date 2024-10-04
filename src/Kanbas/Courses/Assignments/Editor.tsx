@@ -16,10 +16,11 @@ export default function AssignmentEditor() {
   };
   return (
     <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
+      <label htmlFor="wd-name">Assignment Name</label><br/>
       <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
       <textarea id="wd-description" cols={30} rows={5}>
-        The assignment is available online Submit a link to the landing page of your 
+        The assignment is available online.<br />
+        Submit a link to the landing page of your 
         wed application running on Netlify. 
       </textarea>
       <br /><br />

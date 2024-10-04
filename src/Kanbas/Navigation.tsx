@@ -45,7 +45,7 @@ export default function KanbasNavigation() {
         className="list-group-item text-center border-0 bg-black text-white" target="_blank" rel="noopener noreferrer">
         <FaGithub className="fs-1 text-white" /><br />
         My GitHub Repo</a>
-      <a href="https://github.com/jannunzi/kanbas-react-web-app-cs5610-fa24/tree/a1"
+      <a href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24/tree/A2"
          className="list-group-item text-center border-0 bg-black text-white" target="_blank" rel="noopener noreferrer">
         <FaGithub className="fs-1 text-white" /><br />
         Source Code GitHub Repo</a>
