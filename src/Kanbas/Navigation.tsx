@@ -39,8 +39,8 @@ export default function KanbasNavigation() {
         <FaInbox className="fs-1 text-danger" /><br />
         Inbox </Link>
       <Link to="/Labs" id="wd-labs-link"
-        className="list-group-item text-center border-0 bg-black text-white">
-        <LiaCogSolid className="fs-1 text-white" /><br />
+        className="list-group-item text-center border-0 bg-black text-white text-danger">
+        <LiaCogSolid className="fs-1 text-danger" /><br />
         Labs</Link>
       <a href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24"
         className="list-group-item text-center border-0 bg-black text-white" target="_blank" rel="noopener noreferrer">

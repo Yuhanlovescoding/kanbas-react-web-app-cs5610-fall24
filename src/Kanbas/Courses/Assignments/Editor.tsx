@@ -126,7 +126,9 @@ export default function AssignmentEditor() {
               <label htmlFor="wd-available-until" style={{ marginLeft: "15px" }}>Until</label>
             </div>
             <div className="date-range">
-            <input type="date" id="wd-available-from" value="2024-05-06" className="custom-date-input"/>
+            
+              <input type="date" id="wd-available-from" value="2024-05-06" className="custom-date-input"/>
+              
             <input type="date" id="wd-available-until" value="2024-05-13" style={{ marginLeft: "5px" }} className="custom-date-input"/>
           </div></div></div>
         </td>

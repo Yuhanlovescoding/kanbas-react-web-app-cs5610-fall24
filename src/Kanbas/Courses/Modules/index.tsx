@@ -6,7 +6,7 @@ import LessonControlButtons from "./LeesonControlButtons";
 export default function Modules() {
     return (
       <div>
-        <ModulesControls /><br /><br /><br /><br />
+        <ModulesControls /><br /><br /><br />
         <ul id="wd-modules" className="list-group rounded-0">
           <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center justify-content-between">
@@ -24,13 +24,13 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
                 
-                <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+                <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                   <BsGripVertical className="me-2 fs-3" />
                   <span className="flex-grow-1 ps-4">Introduction to the course</span>
                   <LessonControlButtons />
                 </li>
 
-                <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+                <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                   <BsGripVertical className="me-2 fs-3" />
                   <span className="flex-grow-1 ps-4">Learn what is Web Development</span>
                   <LessonControlButtons />
@@ -42,13 +42,13 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Full Stack Developer - Chapter 1 - Introduction</span>
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Full Stack Developer - Chapter 2 - Creating User</span>
                 <LessonControlButtons />
@@ -60,19 +60,19 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Introduction to Web Development</span>
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Creating an HTTP sever with Node.js</span>
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Creating a React Application</span>
                 <LessonControlButtons />
@@ -82,11 +82,14 @@ export default function Modules() {
             </li>
 
             <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-            <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center">
-            <BsGripVertical className="me-2 fs-3" />
-              Week 2, Lecture 2 - Formating User Interfaces with HTML
-              <ModuleControlButtons />  
-            </div>
+
+
+              <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center justify-content-between">
+                <BsGripVertical className="me-2 fs-3" />
+                Week 2, Lecture 2 - Formating User Interfaces with HTML
+                <div className="ms-auto">
+                  <ModuleControlButtons />  
+              </div></div>
 
             <ul className="wd-lessons list-group rounded-0">
 
@@ -96,19 +99,19 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
                 
-                <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+                <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                   <BsGripVertical className="me-2 fs-3" />
                   <span className="flex-grow-1 ps-4">Learn how to create user interfaces with HTML</span>
                   <LessonControlButtons />
                 </li>
 
-                <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+                <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                   <BsGripVertical className="me-2 fs-3" />
                   <span className="flex-grow-1 ps-4">Keep working in assignment 1</span>
                   <LessonControlButtons />
                 </li>
 
-                <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+                <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                   <BsGripVertical className="me-2 fs-3" />
                   <span className="flex-grow-1 ps-4">Deploy the assignment to Netlify</span>
                   <LessonControlButtons />
@@ -120,13 +123,13 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Full Stack Developer - Chapter 1 - Introduction</span>
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Full Stack Developer - Chapter 2 - Creating User</span>
                 <LessonControlButtons />
@@ -138,13 +141,13 @@ export default function Modules() {
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Embeding content with Iframes</span>
                 <LessonControlButtons />
               </li>
 
-              <li className="wd-lesson list-group-item p-3 d-flex align-items-center">
+              <li className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="flex-grow-1 ps-4">Drawing with Scalable Vector Graphics</span>
                 <LessonControlButtons />
