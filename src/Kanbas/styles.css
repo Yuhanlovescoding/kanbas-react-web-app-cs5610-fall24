@@ -203,5 +203,11 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
     pointer-events: none; 
   }
 
-  
-  
+  .label-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.label-input-container label {
+    margin-bottom: 0.01rem; 
+}

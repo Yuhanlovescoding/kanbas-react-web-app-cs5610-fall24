@@ -1,8 +1,18 @@
 import React, { useState, ChangeEvent } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { GoChevronDown } from "react-icons/go";
+import { useParams, Link } from "react-router-dom";
+import DatePickerInput from "./DatePickerInput";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import * as db from "../../Database";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams(); 
+  const assignment = db.assignments.find(assignment => assignment._id === aid); 
+  
+  const [startTime, setStartTime] = useState<Date | null>(assignment ? new Date(assignment.startTime) : new Date());
+  const [dueTime, setDueTime] = useState<Date | null>(assignment ? new Date(assignment.dueTime) : new Date());
 
   const [showOnlineOptions, setShowOnlineOptions] = useState(true);
 
@@ -25,7 +35,7 @@ export default function AssignmentEditor() {
       
       <div className="mb-3">
         <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-        <input id="wd-name" value="A1 - ENV + HTML" className="form-control" />
+        <input id="wd-name" value={assignment?.title} className="form-control" />
       </div>
 
 
@@ -47,7 +57,7 @@ export default function AssignmentEditor() {
       <div className="row mb-3">
         <label htmlFor="wd-points" className="col-md-2 col-form-label text-md-end">Points</label>
         <div className="col-md-10">
-          <input id="wd-points" value={100} className="form-control" />
+          <input id="wd-points" value={assignment?.points} className="form-control" />
         </div>
       </div>
 
@@ -126,21 +136,50 @@ export default function AssignmentEditor() {
               </div>
             </div>
             <br />
+
             <div className="row">
               <div className="col-md-12">
                 <label htmlFor="wd-due-date">Due</label>
-                <input type="date" id="wd-due-date" value="2024-05-13" className="form-control custom-date-input" />
+                <DatePicker
+                  selected={dueTime}
+                  onChange={(date: Date | null) => setDueTime(date)}
+                  showTimeSelect
+                  customInput={<DatePickerInput />}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="form-control custom-date-input"
+                  wrapperClassName="d-block"
+                />
               </div>
             </div>
             <br />
             <div className="row">
               <div className="col-md-6">
+              <div className="label-input-container">
                 <label htmlFor="wd-available-from">Available from</label>
-                <input type="date" id="wd-available-from" value="2024-05-06" className="form-control custom-date-input"/>
+                <DatePicker
+                  selected={startTime}
+                  onChange={(date: Date | null) => setStartTime(date)}
+                  showTimeSelect
+                  customInput={<DatePickerInput />}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="form-control custom-date-input"
+                  wrapperClassName="d-block"
+                />
+              </div> 
               </div>
               <div className="col-md-6">
+              <div className="label-input-container">
                 <label htmlFor="wd-available-until">Until</label>
-                <input type="date" id="wd-available-until" value="2024-05-13" className="form-control custom-date-input"/>
+                <DatePicker
+                  selected={dueTime}
+                  onChange={(date: Date | null) => setDueTime(date)}
+                  showTimeSelect
+                  customInput={<DatePickerInput />}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="form-control custom-date-input"
+                  wrapperClassName="d-block"
+                />
+               </div> 
               </div>
             </div>
           </div>
