@@ -211,3 +211,36 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
 .label-input-container label {
     margin-bottom: 0.01rem; 
 }
+
+
+.custom-date-picker {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 100%;
+  color: #495057;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-date-picker-icon-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-date-picker-icon {
+  color: #6c757d;
+}
+
