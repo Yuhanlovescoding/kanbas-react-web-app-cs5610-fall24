@@ -145,7 +145,7 @@ export default function AssignmentEditor() {
                   onChange={(date: Date | null) => setDueTime(date)}
                   showTimeSelect
                   customInput={<DatePickerInput />}
-                  dateFormat="MMMM d, yyyy h:mm aa"
+                  dateFormat="MMMM d, yyyy, h:mm aa"
                   className="form-control custom-date-input"
                   wrapperClassName="d-block"
                 />
@@ -161,7 +161,7 @@ export default function AssignmentEditor() {
                   onChange={(date: Date | null) => setStartTime(date)}
                   showTimeSelect
                   customInput={<DatePickerInput />}
-                  dateFormat="MMMM d, yyyy h:mm aa"
+                  dateFormat="MMMM d, yyyy, h:mm aa"
                   className="form-control custom-date-input"
                   wrapperClassName="d-block"
                 />
@@ -175,7 +175,7 @@ export default function AssignmentEditor() {
                   onChange={(date: Date | null) => setDueTime(date)}
                   showTimeSelect
                   customInput={<DatePickerInput />}
-                  dateFormat="MMMM d, yyyy h:mm aa"
+                  dateFormat="MMMM d, yyyy, h:mm aa"
                   className="form-control custom-date-input"
                   wrapperClassName="d-block"
                 />
