@@ -6,7 +6,8 @@ import Counter from "./Counter";
 import BooleanStateVariables from "./BooleanStateVariables";
 import StringStateVariables from "./StringStateVariables";
 import DateStateVariable from "./DateStateVariable";
-    
+import ObjectStateVariable from "./ObjectStateVariable";
+import ArrayStateVariable from "./ArrayStateVariable";
     function sayHello(){
         alert("Hello");
     }
@@ -23,6 +24,8 @@ import DateStateVariable from "./DateStateVariable";
         <BooleanStateVariables />
         <StringStateVariables />
         <DateStateVariable />
+        <ObjectStateVariable />
+        <ArrayStateVariable />
         </div>
     );
 }

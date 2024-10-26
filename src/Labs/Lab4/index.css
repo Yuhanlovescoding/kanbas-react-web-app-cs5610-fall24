@@ -8,11 +8,11 @@
     margin: 5px; 
   }
   
-  .up-btn {
+  .green-btn {
     background-color: green;
   }
   
-  .down-btn {
+  .red-btn {
     background-color: rgb(221, 23, 23);
   }
   
