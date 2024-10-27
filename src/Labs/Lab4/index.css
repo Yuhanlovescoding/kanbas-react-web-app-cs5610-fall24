@@ -30,7 +30,27 @@
     gap: 8px; 
   }
   
+  .array-list {
+    list-style-type: none;
+    padding: 0;
+    
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    overflow: hidden; 
+  }
+ 
+  .array-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 10px;
+    border-top: 1px solid #ddd; 
+    background-color: #ffffff;
+  }
   
+  .array-item:first-child {
+    border-top: none; 
+  }
 
 
   

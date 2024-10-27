@@ -8,12 +8,12 @@ export default function ObjectStateVariable() {
       <input
         defaultValue={person.name}
         onChange={(e) => setPerson({ ...person, name: e.target.value })}
-        className="form-control" />
+        className="form-control w-25" />
       <input
         defaultValue={person.age}
         onChange={(e) => setPerson({ ...person,
                                      age: parseInt(e.target.value) })}
-                                     className="form-control" />
+                                     className="form-control w-25" />
       <hr/>
     </div>
   );
