@@ -8,7 +8,7 @@ export default function TodoList() {
     const newTodos = [ ...todos, { ...todo,
       id: new Date().getTime().toString() }];
     setTodos(newTodos);
-    setTodo({id: "-1", title: ""});
+    setTodo({id: "0", title: ""});
   };
   const deleteTodo = (id: string) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
@@ -18,36 +18,39 @@ export default function TodoList() {
     const newTodos = todos.map((item) =>
       (item.id === todo.id ? todo : item));
     setTodos(newTodos);
-    setTodo({id: "-1", title: ""});
+    setTodo({id: "0", title: ""});
   };
   return (
     <div>
       <h2>Todo List</h2>
       <ul className="list-group">
-        <li className="list-group-item">
+        <li className="list-group-item todo-item">
         <input defaultValue={todo.title}
             onChange={(e) =>
               setTodo({ ...todo,
                 title: e.target.value })
             }
           />
+          <div className="button-group">
           <button onClick={() => updateTodo(todo)}
                   id="wd-update-todo-click" className="counter-btn yellow-btn">
             Update </button>
             <button onClick={() => addTodo(todo)}
                   id="wd-add-todo-click" className="counter-btn green-btn">
-                    Add</button>
+                    Add</button></div>
         </li>
         {todos.map((todo) => (
-          <li key={todo.id} className="list-group-item">
+          <li key={todo.id} className="list-group-item todo-item">
             {todo.title}
+            <div className="button-group">
             <button onClick={() => setTodo(todo)}
                     id="wd-set-todo-click" className="btn btn-primary">
               Edit </button>
             <button onClick={() => deleteTodo(todo.id)}
-                    id="wd-delete-todo-click" className="counter-btn green-btn">
-              Delete </button> 
+                    id="wd-delete-todo-click" className="counter-btn red-btn">
+              Delete </button></div> 
           </li>
+          
         ))}
       </ul>
       <hr/>
