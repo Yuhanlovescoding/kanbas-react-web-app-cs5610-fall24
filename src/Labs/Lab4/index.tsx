@@ -1,5 +1,5 @@
 import React from "react";
-
+import ReduxExamples from "./ReduxExamples";
 import ClickEvent from "./ClickEvent";
 import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
@@ -30,7 +30,7 @@ const Lab4 = () => {
         <ObjectStateVariable />
         <ArrayStateVariable />
         <ParentStateComponent />
-        
+        <ReduxExamples />
         </>
     );
 };
