@@ -2,7 +2,7 @@
     {
       "_id": "RS101",
       "name": "Rocket Propulsion",
-      "img":"/images/reactjs.jpg",
+      "image":"/images/reactjs.jpg",
       "number": "RS4550",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -13,7 +13,7 @@
     {
       "_id": "RS102",
       "name": "Aerodynamics",
-      "img":"/images/1.jpg",
+      "image":"/images/1.jpg",
       "number": "RS4560",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -24,7 +24,7 @@
     {
       "_id": "RS103",
       "name": "Spacecraft Design",
-      "img":"/images/2.jpg",
+      "image":"/images/2.jpg",
       "number": "RS4570",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -35,7 +35,7 @@
     {
       "_id": "RS104",
       "name": "Organic Chemistry",
-      "img":"/images/3.jpg",
+      "image":"/images/3.jpg",
       "number": "CH1230",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -46,7 +46,7 @@
     {
       "_id": "RS105",
       "name": "Inorganic Chemistry",
-      "img":"/images/4.jpg",
+      "image":"/images/4.jpg",
       "number": "CH1240",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -57,7 +57,7 @@
     {
       "_id": "RS106",
       "name": "Physical Chemistry",
-      "img":"/images/5.jpg",
+      "image":"/images/5.jpg",
       "number": "CH1250",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -68,7 +68,7 @@
     {
       "_id": "RS107",
       "name": "Ancient Languages and Scripts of Middle-earth",
-      "img":"/images/6.jpg",
+      "image":"/images/6.jpg",
       "number": "ME101",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -80,7 +80,7 @@
     {
       "_id": "RS108",
       "name": "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
-      "img":"/images/7.jpg",
+      "image":"/images/7.jpg",
       "number": "ME102",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -92,7 +92,7 @@
     {
       "_id": "RS109",
       "name": "History and Practice of Middle-earth Magic",
-      "img":"/images/8.jpg",
+      "image":"/images/8.jpg",
       "number": "ME103",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -104,7 +104,7 @@
     {
       "_id": "RS110",
       "name": "Principles of Democratic Education",
-      "img":"/images/9.jpg",
+      "image":"/images/9.jpg",
       "number": "EDU201",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -115,7 +115,7 @@
     {
       "_id": "RS111",
       "name": "Philosophy of Independence and Liberation",
-      "img":"/images/10.jpg",
+      "image":"/images/10.jpg",
       "number": "HIS301",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -126,7 +126,7 @@
     {
       "_id": "RS112",
       "name": "Innovations in Early 19th Century Education",
-      "img":"/images/11.jpg",
+      "image":"/images/11.jpg",
       "number": "EDU303",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -137,7 +137,7 @@
     {
       "_id": "RS113",
       "name": "Foundations of Christian Ethics",
-      "img":"/images/12.jpg",
+      "image":"/images/12.jpg",
       "number": "THEO101",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -149,7 +149,7 @@
     {
       "_id": "RS114",
       "name": "Early Christianity and the Apostolic Age",
-      "img":"/images/13.jpg",
+      "image":"/images/13.jpg",
       "number": "HIS201",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -161,7 +161,7 @@
     {
       "_id": "RS115",
       "name": "Leadership and Service in Christian Communities",
-      "img":"/images/14.jpg",
+      "image":"/images/14.jpg",
       "number": "MIN301",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -173,7 +173,7 @@
     {
       "_id": "RS116",
       "name": "Sufi Philosophy and Mystical Traditions",
-      "img":"/images/15.jpg",
+      "image":"/images/15.jpg",
       "number": "ISL301",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -185,7 +185,7 @@
     {
       "_id": "RS117",
       "name": "Ethical Wisdom in Islamic Teachings",
-      "img":"/images/16.jpg",
+      "image":"/images/16.jpg",
       "number": "ISL202",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -197,7 +197,7 @@
     {
       "_id": "RS118",
       "name": "Understanding the Unseen: Islamic Esotericism",
-      "img":"/images/17.jpg",
+      "image":"/images/17.jpg",
       "number": "ISL403",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -209,7 +209,7 @@
     {
       "_id": "RS119",
       "name": "Ancient Chinese Environmental Management",
-      "img":"/images/18.jpg",
+      "image":"/images/18.jpg",
       "number": "ENV101",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -220,7 +220,7 @@
     {
       "_id": "RS120",
       "name": "Leadership Lessons from Chinese Mythology",
-      "img":"/images/19.jpg",
+      "image":"/images/19.jpg",
       "number": "MGT201",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -231,7 +231,7 @@
     {
       "_id": "RS121",
       "name": "Hydraulic Engineering in Ancient Civilizations",
-      "img":"/images/20.jpg",
+      "image":"/images/20.jpg",
       "number": "ENG303",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
