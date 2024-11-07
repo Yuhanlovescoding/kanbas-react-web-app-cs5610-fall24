@@ -1,4 +1,3 @@
-
 import CoursesNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -23,7 +22,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
         </div>
         <div className="flex-fill">
             <Routes>
-              <Route path="/" element={<Navigate to="Home" />} />
+              <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="Home" element={<Home />} />
               <Route path="Modules" element={<Modules />} />
               <Route path="Assignments" element={<Assignments />} />

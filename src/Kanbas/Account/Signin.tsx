@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
@@ -26,7 +25,8 @@ export default function Signin() {
             <input defaultValue={credentials.password}
                     onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} 
                     id="wd-password" placeholder="password" type="password" className="form-control mb-2"/>
-            <button onClick={signin} id="wd-signin-btn" className="btn btn-primary w-100">
+            <button onClick={signin} id="wd-signin-btn" className="btn btn-primary w-100"
+>
                 Sign in</button>
             
             <Link  id="wd-signup-link" to="/Kanbas/Account/Signup">

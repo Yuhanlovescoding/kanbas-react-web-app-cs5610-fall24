@@ -6,11 +6,14 @@ import { HiChartBar } from "react-icons/hi2";
 import { ImBullhorn } from "react-icons/im";
 import { ImDatabase } from "react-icons/im";
 import { ImBubble } from "react-icons/im";
+import { useSelector } from "react-redux";
 
 export default function CourseStatus() {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   return (
     <div id="wd-course-status" style={{ width: "300px" }}>
       <h2>Course Status</h2>
+      {currentUser?.role === "FACULTY" && (
       <div className="d-flex">
         <div className="w-50 pe-1">
           <button className="btn btn-lg btn-secondary w-100 text-nowrap">
@@ -21,10 +24,14 @@ export default function CourseStatus() {
             <FaCheckCircle className="me-2 fs-5" /> Publish </button>
         </div>
       </div>
+      )}
+      {currentUser?.role === "FACULTY" && (
+        <>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <BiImport className="me- fs-5" /> Import Existing Content </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </button>
+        </> )}
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <HiChartBar className="me-2 fs-5" /> View Course Stream </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
