@@ -3,7 +3,7 @@ import { BsGripVertical } from "react-icons/bs";
 import { useParams, Link } from "react-router-dom";
 import * as db from "../../Database";
 import ModuleControlButtons from "./ModuleControlButtons";
-import LessonControlButtons from "./LeesonControlButtons";
+import LessonControlButtons from "./LessonControlButtons";
 import AssignmentControlButtons from './AssignmentControlButtons';
 
 export default function Assignments() {
