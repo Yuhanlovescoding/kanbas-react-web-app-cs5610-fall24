@@ -23,14 +23,16 @@ export default function Dashboard(
 
  
   const filteredCourses = showAllCourses
-    ? courses
-    : courses.filter(course =>
-        enrollments.some(
-          enrollment =>
-            enrollment.user === currentUser._id &&
-            enrollment.course === course._id
-        )
-      );
+  ? courses
+  : courses.filter(course =>
+      currentUser.role === "FACULTY" 
+        ? true 
+        : enrollments.some(
+            enrollment =>
+              enrollment.user === currentUser._id &&
+              enrollment.course === course._id
+          )
+    );
 
   const handleEnrollmentToggle = (courseId: string, enrolled: boolean) => {
     if (enrolled) {
