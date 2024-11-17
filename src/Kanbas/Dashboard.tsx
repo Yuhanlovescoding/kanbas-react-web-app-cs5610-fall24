@@ -67,7 +67,7 @@ export default function Dashboard(
                     onChange={(e) => setCourse({ ...course, description: e.target.value })} />
           <input value={course.image || ''} className="form-control mb-2"
                  onChange={(e) => setCourse({ ...course, image: e.target.value })}
-                 placeholder="/images/reactjs.jpg" />
+                 placeholder="Enter image URL (eg./images/reactjs.jpg)" />
         </div>
       )}
 
