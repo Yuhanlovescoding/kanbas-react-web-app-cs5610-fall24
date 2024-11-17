@@ -1,3 +1,6 @@
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch, FaCaretDown } from 'react-icons/fa';
 import { BsGripVertical } from "react-icons/bs"; 
 import { useParams, Link } from "react-router-dom";
@@ -6,9 +9,18 @@ import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 import AssignmentControlButtons from './AssignmentControlButtons';
 
+
 export default function Assignments() {
-  const { cid } = useParams();
-  const assignments = db.assignments.filter(assignment => assignment.course === cid);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { cid } = useParams<{ cid: string }>();
+  const assignments = useSelector((state: any) =>
+    state.assignmentsReducer.assignments.filter((assignment: any) => assignment.course === cid)
+  );
+  const handleAddAssignment = () => {
+    navigate(`/Kanbas/Courses/${cid}/Assignments/new`);
+  };
+
     return (
       <div id="wd-assignments" className="container mt-4">
       <div className="d-flex justify-content-between mb-3">
@@ -24,7 +36,7 @@ export default function Assignments() {
           <button id="wd-add-assignment-group" className="btn btn-outline-secondary me-2">
             + Group
           </button>
-          <button id="wd-add-assignment" className="btn btn-danger">
+          <button id="wd-add-assignment" className="btn btn-danger" onClick={handleAddAssignment}>
             + Assignment
           </button>
         </div>
@@ -50,10 +62,10 @@ export default function Assignments() {
       </div>
 
       <ul id="wd-assignment-list" className="list-group">
-      {assignments.map((assignment) => (
+      {assignments.map((assignment: any) => (
       <li className="list-group-item d-flex justify-content-between align-items-center" style={{ borderRadius: '0', borderLeft: '4px solid #28a745'}}>
       <div className="d-flex align-items-center">
-        <AssignmentControlButtons />
+        <AssignmentControlButtons cid={cid!} aid={assignment._id}/>
           <div className="ms-3">
               <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-link  fs-5">
                 {assignment.title}
@@ -66,7 +78,7 @@ export default function Assignments() {
             </div>
           </div>
             <div className="d-flex align-items-center ms-auto">
-              <LessonControlButtons />
+              <LessonControlButtons aid={assignment._id}/>
             </div>
           </li>
       ))}

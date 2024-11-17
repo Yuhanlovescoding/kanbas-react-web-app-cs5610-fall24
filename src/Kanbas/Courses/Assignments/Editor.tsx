@@ -1,63 +1,147 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { GoChevronDown } from "react-icons/go";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addAssignment, updateAssignment } from "./reducer";
 import DatePickerInput from "./DatePickerInput";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import * as db from "../../Database";
 
 export default function AssignmentEditor() {
-  const { cid, aid } = useParams(); 
-  const assignment = db.assignments.find(assignment => assignment._id === aid); 
-  
-  const [startTime, setStartTime] = useState<Date | null>(assignment ? new Date(assignment.startTime) : new Date());
-  const [dueTime, setDueTime] = useState<Date | null>(assignment ? new Date(assignment.dueTime) : new Date());
+  const { cid, aid } = useParams<{ cid: string; aid: string }>(); 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const existingAssignment = useSelector((state: any) =>
+    state.assignmentsReducer.assignments.find((a: any) => a._id === aid)
+  );
 
+  
+  
+
+  const [title, setTitle] = useState(existingAssignment?.title || "");
+  const [description, setDescription] = useState(existingAssignment?.description || "");
+  const [points, setPoints] = useState(existingAssignment?.points || 0);
+  const [dueDate, setDueDate] = useState(existingAssignment?.dueDate || "");
+  const [startTime, setStartTime] = useState<Date | null>(
+    existingAssignment?.startTime && !isNaN(Date.parse(existingAssignment.startTime))
+      ? new Date(existingAssignment.startTime)
+      : new Date()
+  );
+  
+  const [dueTime, setDueTime] = useState<Date | null>(
+    existingAssignment?.dueTime && !isNaN(Date.parse(existingAssignment.dueTime))
+      ? new Date(existingAssignment.dueTime)
+      : new Date()
+  );
   const [showOnlineOptions, setShowOnlineOptions] = useState(true);
 
   const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-      setShowOnlineOptions(event.target.value === 'ONLINE');
+    setShowOnlineOptions(event.target.value === "ONLINE");
   };
 
+
+  
+
   const handleSave = () => {
-    console.log('Save button clicked');
+    const formatDate = (date: string | Date) => {
+      if (!date) return "";
+      const options: Intl.DateTimeFormatOptions = {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      const formattedDate = new Intl.DateTimeFormat("en-US", options).format(new Date(date));
+      const [datePart, timePart] = formattedDate.split(", "); 
+      return `${datePart} at ${timePart}`;
+    };
+  
+    
+    const formattedStartTime = startTime ? formatDate(startTime) : formatDate(new Date());
+    const formattedDueTime = dueTime ? formatDate(dueTime) : formatDate(new Date());
+    if (aid === "new") {
+      dispatch(
+        addAssignment({
+          title,
+          description,
+          points,
+          dueDate:formattedDueTime,
+          startTime:formattedStartTime,
+          dueTime: formattedDueTime,
+          course: cid, 
+          availability: `Not available until ${formattedStartTime}`,
+          modulesInvolved: "Multiple Modules",
+        })
+      );
+    } else {
+      dispatch(
+        updateAssignment({
+          _id: aid,
+          updates: {
+            title,
+            description,
+            points,
+            dueDate: formattedDueTime,
+            startTime: formattedStartTime,
+            dueTime: formattedDueTime,
+          },
+        })
+      );
+    }
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
 
   const handleCancel = () => {
-    console.log('Cancel button clicked');
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
+
+  if (!existingAssignment && aid !== "new") {
+    return (
+      <div className="container mt-5">
+        <div className="alert alert-danger">
+          Assignment not found. <button onClick={() => navigate(`/Kanbas/Courses/${cid}/Assignments`)} className="btn btn-link">Go Back</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!existingAssignment && aid !== "new") {
+    return <div className="alert alert-danger">Assignment not found. Redirecting...</div>;
+  }
+
 
   
   return (
     <div id="wd-assignments-editor" className="container">
-      
+      <h1>{aid === "new" ? "Create Assignment" : "Edit Assignment"}</h1>
       
       <div className="mb-3">
         <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-        <input id="wd-name" value={assignment?.title} className="form-control" />
+        <input id="wd-name" value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" />
       </div>
 
 
 
       <div className="assignment-description-box mb-4">
-        <p>The assignment is <span className="text-danger">available online.</span></p> 
-        <p>Submit a link to the landing page of your web application running on Netlify.</p>
-        <p>The landing page should include the following:</p>
-        <ul>
-            <li>Your full name and section</li>
-            <li>Links to each of the lab assignments</li>
-            <li>Link to the Kanbas application</li>
-            <li>Links to all relevant source code repositories</li>
-        </ul>
-        <p>The Kanbas application should inclued a link to navigate back to the landing page.</p>
+      <label>Description</label>
+        <textarea
+          className="form-control"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </div>
 
       
       <div className="row mb-3">
         <label htmlFor="wd-points" className="col-md-2 col-form-label text-md-end">Points</label>
         <div className="col-md-10">
-          <input id="wd-points" value={assignment?.points} className="form-control" />
+          <input id="wd-points" type ="number" value={points === 0 ? "" : points} onChange={(e) => {
+        const value = e.target.value;
+        setPoints(value === "" ? 0 : Number(value)); 
+      }} className="form-control" />
         </div>
       </div>
 
