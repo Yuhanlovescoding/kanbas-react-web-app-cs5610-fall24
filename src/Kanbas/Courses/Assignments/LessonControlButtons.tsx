@@ -3,14 +3,20 @@ import GreenCheckmark from "./GreenCheckmark";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteAssignment } from "./reducer";
+import * as assignmentsClient from "./client";
 
 export default function LessonControlButtons({ aid }: { aid: string }) {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const confirmed = window.confirm("Are you sure you want to delete this assignment?");
     if (confirmed) {
-      dispatch(deleteAssignment(aid));
+      try {
+        await assignmentsClient.deleteAssignment(aid);
+        dispatch(deleteAssignment(aid));
+      } catch (error) {
+        console.error("Failed to delete assignment:", error);
+      }
     }
   };
   return (

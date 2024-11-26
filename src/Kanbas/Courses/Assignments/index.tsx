@@ -1,14 +1,14 @@
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch, FaCaretDown } from 'react-icons/fa';
 import { BsGripVertical } from "react-icons/bs"; 
 import { useParams, Link } from "react-router-dom";
-import * as db from "../../Database";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 import AssignmentControlButtons from './AssignmentControlButtons';
-
+import { setAssignments } from "./reducer";
+import * as assignmentsClient from "../client";
 
 export default function Assignments() {
   const dispatch = useDispatch();
@@ -17,6 +17,15 @@ export default function Assignments() {
   const assignments = useSelector((state: any) =>
     state.assignmentsReducer.assignments.filter((assignment: any) => assignment.course === cid)
   );
+
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      const assignments = await assignmentsClient.findAssignmentsForCourse(cid!);
+      dispatch(setAssignments(assignments));
+    };
+    fetchAssignments();
+  }, [cid, dispatch]);
+  
   const handleAddAssignment = () => {
     navigate(`/Kanbas/Courses/${cid}/Assignments/new`);
   };

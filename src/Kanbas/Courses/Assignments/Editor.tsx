@@ -7,7 +7,9 @@ import { addAssignment, updateAssignment } from "./reducer";
 import DatePickerInput from "./DatePickerInput";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import * as db from "../../Database";
+import * as assignmentsClient from "./client";
+import * as coursesClient from "../client";
+
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams<{ cid: string; aid: string }>(); 
@@ -23,7 +25,6 @@ export default function AssignmentEditor() {
   const [title, setTitle] = useState(existingAssignment?.title || "");
   const [description, setDescription] = useState(existingAssignment?.description || "");
   const [points, setPoints] = useState(existingAssignment?.points || 0);
-  const [dueDate, setDueDate] = useState(existingAssignment?.dueDate || "");
   const [startTime, setStartTime] = useState<Date | null>(
     existingAssignment?.startTime && !isNaN(Date.parse(existingAssignment.startTime))
       ? new Date(existingAssignment.startTime)
@@ -44,52 +45,24 @@ export default function AssignmentEditor() {
 
   
 
-  const handleSave = () => {
-    const formatDate = (date: string | Date) => {
-      if (!date) return "";
-      const options: Intl.DateTimeFormatOptions = {
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      };
-      const formattedDate = new Intl.DateTimeFormat("en-US", options).format(new Date(date));
-      const [datePart, timePart] = formattedDate.split(", "); 
-      return `${datePart} at ${timePart}`;
+  const handleSave = async () => {
+    const formattedAssignment = {
+      title,
+      description,
+      points,
+      dueTime: dueTime?.toISOString() || new Date().toISOString(),
+      startTime: startTime?.toISOString() || new Date().toISOString(),
+      course: cid,
+      availability: `Not available until ${startTime?.toLocaleString()}`,
+      modulesInvolved: "Multiple Modules",
     };
-  
-    
-    const formattedStartTime = startTime ? formatDate(startTime) : formatDate(new Date());
-    const formattedDueTime = dueTime ? formatDate(dueTime) : formatDate(new Date());
-    if (aid === "new") {
-      dispatch(
-        addAssignment({
-          title,
-          description,
-          points,
-          dueDate:formattedDueTime,
-          startTime:formattedStartTime,
-          dueTime: formattedDueTime,
-          course: cid, 
-          availability: `Not available until ${formattedStartTime}`,
-          modulesInvolved: "Multiple Modules",
-        })
-      );
+
+    if (aid === "new") { 
+      const createdAssignment = await coursesClient.createAssignmentForCourse(cid!, formattedAssignment);
+      dispatch(addAssignment(createdAssignment));
     } else {
-      dispatch(
-        updateAssignment({
-          _id: aid,
-          updates: {
-            title,
-            description,
-            points,
-            dueDate: formattedDueTime,
-            startTime: formattedStartTime,
-            dueTime: formattedDueTime,
-          },
-        })
-      );
+      const updatedAssignment = await assignmentsClient.updateAssignment({ ...formattedAssignment, _id: aid });
+      dispatch(updateAssignment(updatedAssignment));
     }
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
