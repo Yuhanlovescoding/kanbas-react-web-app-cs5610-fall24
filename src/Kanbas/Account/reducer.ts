@@ -1,10 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
-import enrollmentsData from "../Database/enrollments.json";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import * as enrollmentsClient from "../Enrollments/client";
 
 const initialState = {
   currentUser: null,
-  enrollments: enrollmentsData,
+  enrollments: [] as any[],
 };
+
+export const fetchEnrollments = createAsyncThunk(
+  "account/fetchEnrollments",
+  async () => {
+    return await enrollmentsClient.getEnrollments();
+  }
+);
+
+export const enrollInCourse = createAsyncThunk(
+  "account/enrollInCourse",
+  async ({ userId, courseId }: { userId: string; courseId: string }) => {
+    return await enrollmentsClient.enrollInCourse(userId, courseId);
+  }
+);
+
+export const unenrollFromCourse = createAsyncThunk(
+  "account/unenrollFromCourse",
+  async ({ userId, courseId }: { userId: string; courseId: string }) => {
+    return await enrollmentsClient.unenrollFromCourse(userId, courseId);
+  }
+);
+
 const accountSlice = createSlice({
   name: "account",
   initialState,
@@ -12,17 +34,22 @@ const accountSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
-    enroll: (state, action) => {
-      const newEnrollment = { _id: Date.now().toString(), ...action.payload };
-      state.enrollments.push(newEnrollment);
-    },
-    unenroll: (state, action) => {
-      state.enrollments = state.enrollments.filter(
-        (enrollment) => 
-          !(enrollment.user === action.payload.user && enrollment.course === action.payload.course)
-      );
-    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchEnrollments.fulfilled, (state, action) => {
+        state.enrollments = action.payload;
+      })
+      .addCase(enrollInCourse.fulfilled, (state, action) => {
+        state.enrollments.push(action.payload);
+      })
+      .addCase(unenrollFromCourse.fulfilled, (state, action) => {
+        state.enrollments = state.enrollments.filter(
+          enrollment => enrollment._id !== action.payload._id
+        );
+      });
   },
 });
-export const { setCurrentUser, enroll, unenroll } = accountSlice.actions;
+
+export const { setCurrentUser } = accountSlice.actions;
 export default accountSlice.reducer;

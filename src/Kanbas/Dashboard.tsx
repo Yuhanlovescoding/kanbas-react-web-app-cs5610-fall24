@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { enroll, unenroll } from "./Account/reducer"; 
+import { useState, useEffect } from "react";
+import { fetchEnrollments, enrollInCourse, unenrollFromCourse } from "./Account/reducer";
+import type { AppDispatch } from "./store";
+import * as coursesClient from "./Courses/client";
+
 
 export default function Dashboard(
   { courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }: {
@@ -13,7 +16,47 @@ export default function Dashboard(
     updateCourse: (course: any) => void;
   }
 ) {
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { currentUser, enrollments } = useSelector((state: any) => state.accountReducer);
+  const dispatch = useDispatch<AppDispatch>();
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const [allCourses, setAllCourses] = useState<any[]>([]);
+  
+  useEffect(() => {
+    const fetchCoursesAndEnrollments = async () => {
+      if (currentUser?.role === "FACULTY") {
+        const allCourses = await coursesClient.fetchAllCourses();
+        setCourse(allCourses);
+      }
+      const courses = await coursesClient.fetchAllCourses(); 
+      setAllCourses(courses);
+
+      if (currentUser?.role === "STUDENT") {
+        dispatch(fetchEnrollments());
+      }
+    };
+
+    fetchCoursesAndEnrollments();
+  }, [dispatch, currentUser]);
+
+  const filteredCourses = currentUser?.role === "FACULTY"
+    ? courses 
+    : showAllCourses
+    ? allCourses 
+    : allCourses.filter((course: any) =>
+        enrollments.some(
+          (enrollment: any) =>
+            enrollment.user === currentUser?._id && enrollment.course === course._id
+        )
+      );
+
+  const handleEnrollmentToggle = async (courseId: string, enrolled: boolean) => {
+    if (enrolled) {
+      await dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
+    } else {
+      await dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
+    }
+    dispatch(fetchEnrollments());
+  };
 
   return (
     <div id="wd-dashboard">
@@ -43,12 +86,25 @@ export default function Dashboard(
 
       <hr />
       <div className="d-flex align-items-center justify-content-between">
-      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> 
+      <h2 id="wd-dashboard-published">Published Courses ({filteredCourses.length})</h2> 
+      {currentUser?.role === "STUDENT" && (
+          <button
+            className="btn btn-primary float-end"
+            onClick={() => setShowAllCourses(!showAllCourses)}
+          >
+            Enrollment
+          </button>
+        )}
       </div><hr />
       
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-4 g-4 mb-2">
-          {courses.map((course) => (
+          {filteredCourses.map((course) => {
+            const enrolled = enrollments.some(
+              (enrollment: any) =>
+                enrollment.user === currentUser._id && enrollment.course === course._id
+            );
+            return (
               <div className="wd-dashboard-course col" style={{ width: "270px" }}>
                 <div className="card rounded-3 overflow-hidden">
                   <Link to={`/Kanbas/Courses/${course._id}/Home`}
@@ -62,6 +118,17 @@ export default function Dashboard(
                         {course.description}
                       </p>
                       <button className="btn btn-primary"> Go </button>
+                      {currentUser?.role === "STUDENT" && (
+                        <button
+                          className={`btn ${enrolled ? "btn-danger" : "btn-success"} float-end`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleEnrollmentToggle(course._id, enrolled);
+                          }}
+                        >
+                          {enrolled ? "Unenroll" : "Enroll"}
+                        </button>
+                      )}
                       
                       {currentUser?.role === "FACULTY" && (
                         <>
@@ -86,7 +153,8 @@ export default function Dashboard(
                   </Link>
                 </div>
               </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

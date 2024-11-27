@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { assignments as initialAssignments } from "../../Database";
+
 
 const assignmentsSlice = createSlice({
     name: "assignments",
-    initialState: { assignments: initialAssignments },
+    initialState: { assignments: [] as any [] },
     reducers: {
         setAssignments: (state, { payload }) => {
             state.assignments = payload;
