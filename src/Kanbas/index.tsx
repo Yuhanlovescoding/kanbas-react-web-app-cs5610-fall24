@@ -6,6 +6,7 @@ import Courses from "./Courses";
 import "./styles.css";
 import * as db from "./Database";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import ProtectedRoute from "./Account/ProtectedRoute";
 
 
@@ -15,8 +16,16 @@ export default function Kanbas() {
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
+  const { currentUser} = useSelector((state: any) => state.accountReducer);
+  
   const addNewCourse = () => {
-    setCourses([...courses, { ...course, _id: new Date().getTime().toString() }]);
+    const newCourse = {
+      ...course, 
+      _id: Date.now().toString(), 
+      creator: currentUser._id, 
+    };
+    courses.push(newCourse); 
+    setCourse([...courses, { ...course, _id: new Date().getTime().toString() }]); 
   };
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
