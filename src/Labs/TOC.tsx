@@ -40,12 +40,12 @@ export default function TOC() {
         </a>
       </li>
       <li className="nav-item">
-        <a id="wd-k" href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24/tree/a3" className="nav-link">
+        <a id="wd-k" href="https://github.com/Yuhanlovescoding/kanbas-react-web-app-cs5610-fall24/tree/a4" className="nav-link">
           My GitHub
         </a>
       </li>
       <li className="nav-item">
-        <a id="wd-k" href="https://github.com/jannunzi/kanbas-react-web-app-cs5610-fa24/tree/a3" className="nav-link">
+        <a id="wd-k" href="https://github.com/jannunzi/kanbas-react-web-app-cs5610-fa24/tree/a4" className="nav-link">
         Source Code GitHub Repo
         </a>
       </li>
