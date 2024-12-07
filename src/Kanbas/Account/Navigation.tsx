@@ -28,6 +28,14 @@ export default function AccountNavigation() {
       >
         Profile
       </NavLink>
+
+      {currentUser && currentUser.role === "ADMIN" && (
+      <NavLink 
+        to="/Kanbas/Account/Users" 
+        className={`list-group-item ${pathname === "/Kanbas/Account/Users" ? 'active text-dark bg-white' : 'text-danger'} border border-0`}
+      >
+        Users
+      </NavLink>)}
     </div>
   );
 }
