@@ -116,7 +116,8 @@ export default function AssignmentEditor() {
   
   return (
     <div id="wd-assignments-editor" className="container">
-      <h1>{aid === "new" ? "Create Assignment" : "Edit Assignment"}</h1>
+      {currentUser?.role === "FACULTY" && (
+      <h1>{aid === "new" ? "Create Assignment" : "Edit Assignment"}</h1>)}
       
       <div className="mb-3">
         <label htmlFor="wd-name" className="form-label">Assignment Name</label>
