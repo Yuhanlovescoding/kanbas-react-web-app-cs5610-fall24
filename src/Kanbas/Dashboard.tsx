@@ -109,7 +109,6 @@ export default function Dashboard(
                  placeholder="Enter image URL (eg./images/reactjs.jpg)" />
         </div>
       )}
-
       <hr />
       <div className="d-flex align-items-center justify-content-between">
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> 
