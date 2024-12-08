@@ -87,7 +87,7 @@ export default function Dashboard(
         </button></h1>  
       <hr />
       
-      {currentUser?.role === "FACULTY" && (
+      {(currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN") && (
         <div>
           <h5>New Course
             <button className="btn btn-primary float-end"
@@ -145,7 +145,7 @@ export default function Dashboard(
                       </p>
                       <button className="btn btn-primary"> Go </button>
                       
-                      {currentUser?.role === "FACULTY" && (
+                      {(currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN") && (
                         <>
                           <button id="wd-delete-course-click"
                                   onClick={(event) => {
