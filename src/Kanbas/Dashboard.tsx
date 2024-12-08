@@ -38,16 +38,18 @@ export default function Dashboard(
     fetchCoursesAndEnrollments();
   }, [dispatch, currentUser]);
 
-  const filteredCourses = currentUser?.role === "FACULTY"
-    ? courses 
-    : showAllCourses
-    ? allCourses 
-    : allCourses.filter((course: any) =>
+  const filteredCourses = showAllCourses
+    ? allCourses
+    : currentUser?.role === "STUDENT"
+    ? allCourses.filter((course: any) =>
         enrollments.some(
           (enrollment: any) =>
-            enrollment.user === currentUser?._id && enrollment.course === course._id
+            enrollment.user === currentUser._id && enrollment.course === course._id
         )
-      );
+      )
+    : currentUser?.role === "FACULTY"
+    ? courses
+    : [];
 
   const handleEnrollmentToggle = async (courseId: string, enrolled: boolean) => {
     if (enrolled) {
@@ -87,14 +89,14 @@ export default function Dashboard(
       <hr />
       <div className="d-flex align-items-center justify-content-between">
       <h2 id="wd-dashboard-published">Published Courses ({filteredCourses.length})</h2> 
-      {currentUser?.role === "STUDENT" && (
-          <button
-            className="btn btn-primary float-end"
-            onClick={() => setShowAllCourses(!showAllCourses)}
-          >
-            Enrollment
-          </button>
-        )}
+      
+        <button
+        className="btn btn-primary float-end"
+        onClick={() => setShowAllCourses(!showAllCourses)}
+      >
+        {showAllCourses ? "My Courses" : "All Courses"}
+      </button>
+        
       </div><hr />
       
       <div id="wd-dashboard-courses" className="row">
