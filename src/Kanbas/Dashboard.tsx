@@ -7,56 +7,70 @@ import * as coursesClient from "./Courses/client";
 
 
 export default function Dashboard(
-  { courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }: {
+  { courses, course, setCourses, addNewCourse, deleteCourse, updateCourse }: {
     courses: any[];
     course: any;
-    setCourse: (course: any) => void;
+    setCourses: (course: any) => void;
     addNewCourse: () => void;
     deleteCourse: (courseId: string) => void;
     updateCourse: (course: any) => void;
   }
 ) {
-  const { currentUser, enrollments } = useSelector((state: any) => state.accountReducer);
-  const dispatch = useDispatch<AppDispatch>();
-  const [showAllCourses, setShowAllCourses] = useState(false);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  //const dispatch = useDispatch<AppDispatch>();
+  //const [showAllCourses, setShowAllCourses] = useState(false);
   const [allCourses, setAllCourses] = useState<any[]>([]);
   
-  useEffect(() => {
-    const fetchCoursesAndEnrollments = async () => {
-      if (currentUser?.role === "FACULTY") {
-        const allCourses = await coursesClient.fetchAllCourses();
-        setCourse(allCourses);
-      }
-      const courses = await coursesClient.fetchAllCourses(); 
-      setAllCourses(courses);
+  // useEffect(() => {
+  //   const fetchCoursesAndEnrollments = async () => {
+  //     if (currentUser?.role === "FACULTY") {
+  //       const allCourses = await coursesClient.fetchAllCourses();
+  //       setCourse(allCourses);
+  //     }
+  //     const courses = await coursesClient.fetchAllCourses(); 
+  //     setAllCourses(courses);
 
-      if (currentUser?.role === "STUDENT") {
-        dispatch(fetchEnrollments());
+  //     if (currentUser?.role === "STUDENT") {
+  //       dispatch(fetchEnrollments());
+  //     }
+  //   };
+
+  //   fetchCoursesAndEnrollments();
+  // }, [dispatch, currentUser]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const allCourses = await coursesClient.fetchAllCourses();
+        setAllCourses(allCourses);
+        setCourses(allCourses); 
+      } catch (error) {
+        console.error("Failed to fetch courses:", error);
       }
     };
 
-    fetchCoursesAndEnrollments();
-  }, [dispatch, currentUser]);
+    fetchCourses();
+  }, []);
 
-  const filteredCourses = currentUser?.role === "FACULTY"
-    ? courses 
-    : showAllCourses
-    ? allCourses 
-    : allCourses.filter((course: any) =>
-        enrollments.some(
-          (enrollment: any) =>
-            enrollment.user === currentUser?._id && enrollment.course === course._id
-        )
-      );
+  // const filteredCourses = currentUser?.role === "FACULTY"
+  //   ? courses 
+  //   : showAllCourses
+  //   ? allCourses 
+  //   : allCourses.filter((course: any) =>
+  //       enrollments.some(
+  //         (enrollment: any) =>
+  //           enrollment.user === currentUser?._id && enrollment.course === course._id
+  //       )
+  //     );
 
-  const handleEnrollmentToggle = async (courseId: string, enrolled: boolean) => {
-    if (enrolled) {
-      await dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
-    } else {
-      await dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
-    }
-    dispatch(fetchEnrollments());
-  };
+  // const handleEnrollmentToggle = async (courseId: string, enrolled: boolean) => {
+  //   if (enrolled) {
+  //     await dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
+  //   } else {
+  //     await dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
+  //   }
+  //   dispatch(fetchEnrollments());
+  // };
 
   return (
     <div id="wd-dashboard">
@@ -75,35 +89,23 @@ export default function Dashboard(
             </button>
           </h5><br />
           <input value={course.name} className="form-control mb-2"
-                 onChange={(e) => setCourse({ ...course, name: e.target.value })} />
+                 onChange={(e) => setCourses({ ...course, name: e.target.value })} />
           <textarea value={course.description} className="form-control"
-                    onChange={(e) => setCourse({ ...course, description: e.target.value })} />
+                    onChange={(e) => setCourses({ ...course, description: e.target.value })} />
           <input value={course.image || ''} className="form-control mb-2"
-                 onChange={(e) => setCourse({ ...course, image: e.target.value })}
+                 onChange={(e) => setCourses({ ...course, image: e.target.value })}
                  placeholder="Enter image URL (eg./images/reactjs.jpg)" />
         </div>
       )}
 
       <hr />
       <div className="d-flex align-items-center justify-content-between">
-      <h2 id="wd-dashboard-published">Published Courses ({filteredCourses.length})</h2> 
-      {currentUser?.role === "STUDENT" && (
-          <button
-            className="btn btn-primary float-end"
-            onClick={() => setShowAllCourses(!showAllCourses)}
-          >
-            Enrollment
-          </button>
-        )}
+      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> 
       </div><hr />
       
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-4 g-4 mb-2">
-          {filteredCourses.map((course) => {
-            const enrolled = enrollments.some(
-              (enrollment: any) =>
-                enrollment.user === currentUser._id && enrollment.course === course._id
-            );
+          {courses.map((course) => {
             return (
               <div className="wd-dashboard-course col" style={{ width: "270px" }}>
                 <div className="card rounded-3 overflow-hidden">
@@ -118,17 +120,6 @@ export default function Dashboard(
                         {course.description}
                       </p>
                       <button className="btn btn-primary"> Go </button>
-                      {currentUser?.role === "STUDENT" && (
-                        <button
-                          className={`btn ${enrolled ? "btn-danger" : "btn-success"} float-end`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleEnrollmentToggle(course._id, enrolled);
-                          }}
-                        >
-                          {enrolled ? "Unenroll" : "Enroll"}
-                        </button>
-                      )}
                       
                       {currentUser?.role === "FACULTY" && (
                         <>
@@ -142,7 +133,7 @@ export default function Dashboard(
                           <button id="wd-edit-course-click"
                                   onClick={(event) => {
                                     event.preventDefault();
-                                    setCourse(course);
+                                    setCourses(course);
                                   }}
                                   className="btn btn-warning me-2 float-end">
                             Edit
