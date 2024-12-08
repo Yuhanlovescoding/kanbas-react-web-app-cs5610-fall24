@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details";
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+
 
 // import { useParams } from "react-router-dom";
 // import * as db from "../../Database";
