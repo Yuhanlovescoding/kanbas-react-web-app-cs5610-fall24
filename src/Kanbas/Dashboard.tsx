@@ -7,7 +7,7 @@ import * as coursesClient from "./Courses/client";
 
 
 export default function Dashboard(
-  { courses, course, setCourses, addNewCourse, deleteCourse, updateCourse, enrolling, setEnrolling }: {
+  { courses, course, setCourses, addNewCourse, deleteCourse, updateCourse, enrolling, setEnrolling, updateEnrollment }: {
     courses: any[];
     course: any;
     setCourses: (course: any) => void;
@@ -16,6 +16,7 @@ export default function Dashboard(
     updateCourse: (course: any) => void;
     enrolling: boolean;
     setEnrolling: (enrolling: boolean) => void;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void 
   }
 ) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -65,14 +66,14 @@ export default function Dashboard(
   //       )
   //     );
 
-  const handleEnrollmentToggle = async (courseId: string) => {
-    if (course.enrolled) {
-      await dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
-    } else {
-      await dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
-    }
-    dispatch(fetchEnrollments());
-  };
+  // const handleEnrollmentToggle = async (courseId: string) => {
+  //   if (course.enrolled) {
+  //     await dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
+  //   } else {
+  //     await dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
+  //   }
+  //   dispatch(fetchEnrollments());
+  // };
 
   return (
     <div id="wd-dashboard">
@@ -131,7 +132,7 @@ export default function Dashboard(
                             } float-end`}
                             onClick={(e) => {
                               e.preventDefault();
-                              handleEnrollmentToggle(course);
+                              updateEnrollment(course._id, !course.enrolled);
                             }}
                           >
                             {course.enrolled ? "Unenroll" : "Enroll"}
