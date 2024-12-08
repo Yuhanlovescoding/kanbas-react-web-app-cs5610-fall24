@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch, FaCaretDown } from 'react-icons/fa';
 import { BsGripVertical } from "react-icons/bs"; 
 import { useParams, Link } from "react-router-dom";
-import * as db from "../../Database";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 import AssignmentControlButtons from './AssignmentControlButtons';
 
 
 export default function Assignments() {
-  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const navigate = useNavigate();
   const { cid } = useParams<{ cid: string }>();
   const assignments = useSelector((state: any) =>
@@ -32,6 +31,7 @@ export default function Assignments() {
                className="form-control w-50"
                placeholder="Search for Assignments" />
         </div>
+        {currentUser?.role === "FACULTY" && (
         <div>
           <button id="wd-add-assignment-group" className="btn btn-outline-secondary me-2">
             + Group
@@ -39,7 +39,7 @@ export default function Assignments() {
           <button id="wd-add-assignment" className="btn btn-danger" onClick={handleAddAssignment}>
             + Assignment
           </button>
-        </div>
+        </div>)}
       </div>
 
 
@@ -57,7 +57,8 @@ export default function Assignments() {
           }}>
             40% of Total
           </div>
-          <ModuleControlButtons />
+          {currentUser?.role === "FACULTY" && (
+          <ModuleControlButtons />)}
         </div>
       </div>
 
@@ -65,7 +66,7 @@ export default function Assignments() {
       {assignments.map((assignment: any) => (
       <li className="list-group-item d-flex justify-content-between align-items-center" style={{ borderRadius: '0', borderLeft: '4px solid #28a745'}}>
       <div className="d-flex align-items-center">
-        <AssignmentControlButtons cid={cid!} aid={assignment._id}/>
+      {currentUser?.role === "FACULTY" && (<AssignmentControlButtons cid={cid!} aid={assignment._id}/>)}
           <div className="ms-3">
               <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-link  fs-5">
                 {assignment.title}
@@ -77,9 +78,10 @@ export default function Assignments() {
               <small><b>Due:</b> {assignment.dueDate} | {assignment.points}</small>
             </div>
           </div>
+          {currentUser?.role === "FACULTY" && (
             <div className="d-flex align-items-center ms-auto">
               <LessonControlButtons aid={assignment._id}/>
-            </div>
+            </div>)}
           </li>
       ))}
       </ul>

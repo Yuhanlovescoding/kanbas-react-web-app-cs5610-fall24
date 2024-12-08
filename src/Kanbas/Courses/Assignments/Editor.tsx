@@ -19,7 +19,7 @@ export default function AssignmentEditor() {
 
   
   
-
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [title, setTitle] = useState(existingAssignment?.title || "");
   const [description, setDescription] = useState(existingAssignment?.description || "");
   const [points, setPoints] = useState(existingAssignment?.points || 0);
@@ -134,7 +134,7 @@ export default function AssignmentEditor() {
         />
       </div>
 
-      
+    
       <div className="row mb-3">
         <label htmlFor="wd-points" className="col-md-2 col-form-label text-md-end">Points</label>
         <div className="col-md-10">
@@ -145,6 +145,7 @@ export default function AssignmentEditor() {
         </div>
       </div>
 
+      {currentUser?.role === "FACULTY" && (  
       <div className="row mb-3">
         <label htmlFor="wd-group" className="col-md-2 col-form-label text-md-end">Assignment Group</label>
         <div className="col-md-10">
@@ -155,8 +156,9 @@ export default function AssignmentEditor() {
           <GoChevronDown className="select-icon" />
         </div>
       </div>
-      </div>
+      </div>)}
 
+      {currentUser?.role === "FACULTY" && ( 
       <div className="row mb-3">
         <label htmlFor="wd-display-grade-as" className="col-md-2 col-form-label text-md-end">Display Grade as</label>
         <div className="col-md-10">
@@ -168,9 +170,9 @@ export default function AssignmentEditor() {
           <GoChevronDown className="select-icon" />
         </div>
       </div>
-      </div>
+      </div>)}
 
-      
+      {currentUser?.role === "FACULTY" && ( 
       <div className="row mb-3">
         <label htmlFor="wd-submission-type" className="col-md-2 col-form-label text-md-end">Submission Type</label>
         <div className="col-md-10">
@@ -204,9 +206,9 @@ export default function AssignmentEditor() {
             )}
           </div>
         </div>
-      </div>
+      </div>)}
 
-      
+      {currentUser?.role === "FACULTY" && ( 
       <div className="row mb-3">
         <label className="col-md-2 col-form-label text-md-end">Assign</label>
         <div className="col-md-10">
@@ -268,14 +270,15 @@ export default function AssignmentEditor() {
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
 
       
       <hr />
+      {currentUser?.role === "FACULTY" && (
       <div className="d-flex justify-content-end mt-3">
         <button onClick={handleCancel} className="btn btn-secondary me-2">Cancel</button>
         <button onClick={handleSave} className="btn btn-danger float-end">Save</button>
-      </div>
+      </div>)}
     </div>
   );
 }
