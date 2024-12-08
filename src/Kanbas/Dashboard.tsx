@@ -23,18 +23,25 @@ export default function Dashboard({
   const navigate = useNavigate();
   const [showAllCourses, setShowAllCourses] = useState(false);
 
-  const filteredCourses = currentUser.role === "FACULTY"
-    ? courses.filter((course) =>
+  const filteredCourses = showAllCourses
+  ? courses
+  : currentUser.role === "STUDENT"
+  ? courses.filter((course) =>
       enrollments.some(
         (enrollment: any) =>
           enrollment.user === currentUser._id && enrollment.course === course._id
-      ) || course.creator === currentUser._id 
+      )
     )
-    : showAllCourses
-    ? courses 
-    : courses.filter((course) =>
-        enrollments.some((enrollment:any) => enrollment.user === currentUser._id && enrollment.course === course._id)
-      );
+  : currentUser.role === "FACULTY"
+  ? courses.filter(
+      (course) =>
+        enrollments.some(
+          (enrollment: any) =>
+            enrollment.user === currentUser._id &&
+            enrollment.course === course._id
+        ) || course.creator === currentUser._id
+    )
+  : [];
 
     
   const handleEnrollmentToggle = (courseId: string, enrolled: boolean) => {
@@ -96,11 +103,14 @@ export default function Dashboard({
       <hr />
       <div className="d-flex align-items-center justify-content-between">
         <h2>Published Courses ({filteredCourses.length})</h2>
-        {currentUser?.role === "STUDENT" && (
-          <button className="btn btn-primary float-end" onClick={() => setShowAllCourses(!showAllCourses)}>
-             Enrollments
-          </button>
-        )}
+        
+        <button
+          className="btn btn-primary float-end"
+          onClick={() => setShowAllCourses(!showAllCourses)}
+        >
+          {showAllCourses ? "My Courses" : "All Courses"}
+        </button>
+        
       </div>
       <hr />
 
