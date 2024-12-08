@@ -98,10 +98,12 @@ export default function Dashboard(
               Update
             </button>
           </h5><br />
-          <input value={course.name} className="form-control mb-2"
-                 onChange={(e) => setCourses({ ...course, name: e.target.value })} />
-          <textarea value={course.description} className="form-control"
-                    onChange={(e) => setCourses({ ...course, description: e.target.value })} />
+          <input value={course.name || ''} className="form-control mb-2"
+                 onChange={(e) => setCourses({ ...course, name: e.target.value })} 
+                 placeholder="New Course Name" />
+          <textarea value={course.description || ''} className="form-control"
+                    onChange={(e) => setCourses({ ...course, description: e.target.value })} 
+                    placeholder="New Description"/>
           <input value={course.image || ''} className="form-control mb-2"
                  onChange={(e) => setCourses({ ...course, image: e.target.value })}
                  placeholder="Enter image URL (eg./images/reactjs.jpg)" />
