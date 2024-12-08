@@ -17,17 +17,43 @@ export default function Kanbas() {
     name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
+  const [enrolling, setEnrolling] = useState<boolean>(false);
+
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   
-  const fetchCourses = async () => {
+  const findCoursesForUser = async () => {
     try {
-      const courses = await courseClient.fetchAllCourses();
+      const courses = await userClient.findCoursesForUser(currentUser._id);
       setCourses(courses);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
+  // const fetchCourses = async () => {
+  //   try {
+  //     const courses = await courseClient.fetchAllCourses();
+  //     setCourses(courses);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  const fetchCourses = async () => {
+    try {
+      const allCourses = await courseClient.fetchAllCourses();
+      const enrolledCourses = await userClient.findCoursesForUser(currentUser._id);
+      const courses = allCourses.map((course: any) => {
+        if (enrolledCourses.find((c: any) => c._id === course._id)) {
+          return { ...course, enrolled: true };
+        } else {
+          return course;
+        }
+      });
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const addNewCourse = async () => {
       //const newCourse = await userClient.createCourse(course); 
@@ -52,9 +78,17 @@ export default function Kanbas() {
     );
   };
 
+  // useEffect(() => {
+  //   fetchCourses();
+  // }, [currentUser]);
+
   useEffect(() => {
-    fetchCourses();
-  }, [currentUser]);
+    if (enrolling) {
+      fetchCourses();
+    } else {
+      findCoursesForUser();
+    }
+  }, [currentUser, enrolling]);
 
   return (
     <Session>
@@ -71,7 +105,9 @@ export default function Kanbas() {
                 setCourses={setCourse}
                 addNewCourse={addNewCourse}
                 deleteCourse={deleteCourse}
-                updateCourse={updateCourse}/></ProtectedRoute>
+                updateCourse={updateCourse}
+                enrolling={enrolling}
+                setEnrolling={setEnrolling}/></ProtectedRoute>
             } />
             <Route path="/Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses}/></ProtectedRoute>} />
             <Route path="/Calendar" element={<h1>Calendar</h1>} />
